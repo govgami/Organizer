@@ -20,9 +20,4 @@
         </property>
         
     </bean>
-    
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-    <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfigurationWithWildcard"/>
-    <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
-</bean>
 </beans>

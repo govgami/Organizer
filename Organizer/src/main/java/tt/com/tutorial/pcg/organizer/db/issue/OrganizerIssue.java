@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name="organizer_issues")
+@Table(name=OrganizerIssue.TABLE_NAME)
 @Entity
 public class OrganizerIssue  implements Serializable{
 	
@@ -27,8 +27,9 @@ public class OrganizerIssue  implements Serializable{
 	
 	public static final String ISSUE_ID="id";
 	public static final String ISSUE_NAME="name";
-	public static final String ISSUE_MEMO="descript";
+	public static final String ISSUE_MEMO="description";
 	public static final String ISSUE_PRIORITY="priority";
+	public static final String TABLE_NAME="organizer_issues";
 	
 	protected OrganizerIssue() {}
 	public OrganizerIssue(String issueName, String issueMemo, Integer issuePriority) {

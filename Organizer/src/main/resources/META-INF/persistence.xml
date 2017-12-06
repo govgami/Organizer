@@ -4,11 +4,11 @@
 	http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	  version="2.1">
 	  
-	  <persistence-unit name="jpa-issue">
+	  <persistence-unit name="organizer">
 	  <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 	  <properties>
 	  	<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-	    <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/postgres" />
+	    <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/postgres" />
 	    <property name="javax.persistence.jdbc.user" value="postgres" />
 	    <property name="javax.persistence.jdbc.password" value="postgres" />
 	    <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />

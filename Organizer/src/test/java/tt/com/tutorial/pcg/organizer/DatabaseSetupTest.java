@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import tt.com.tutorial.pcg.organizer.db.Connection;
+import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -20,6 +21,7 @@ public class DatabaseSetupTest {
 		//when
 		
 		EntityManager em=Connection.getNewconnection();
+//		em.getMetamodel().entity(OrganizerIssue.class);
 		
 		//then
 		Assert.assertNotNull(em);

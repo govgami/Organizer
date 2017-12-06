@@ -1,5 +1,8 @@
 package tt.com.tutorial.pcg.organizer;
 
+import javax.persistence.EntityManager;
+
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +17,12 @@ public class DatabaseSetupTest {
 
 	@Test
 	public void shouldCreateConnectionTest() {
-		Connection.getNewconnection();
+		//when
+		
+		EntityManager em=Connection.getNewconnection();
+		
+		//then
+		Assert.assertNotNull(em);
 	}
 
 }

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Table(name="organizer_issues")
 @Entity
-public class OrganizerIssues  implements Serializable{
+public class OrganizerIssue  implements Serializable{
 	
 	private static final long serialVersionUID = -5779250262246228208L;
 	@Id
@@ -30,8 +30,8 @@ public class OrganizerIssues  implements Serializable{
 	public static final String ISSUE_MEMO="descript";
 	public static final String ISSUE_PRIORITY="priority";
 	
-	protected OrganizerIssues() {}
-	public OrganizerIssues(String issueName, String issueMemo, Integer issuePriority) {
+	protected OrganizerIssue() {}
+	public OrganizerIssue(String issueName, String issueMemo, Integer issuePriority) {
 		this.issueName=issueName;
 		this.issueMemo=issueMemo;
 		this.issuePriority=issuePriority;

@@ -17,7 +17,7 @@ static {
 	persistenceMap.put("javax.persistence.jdbc.url", "jdbc:postgresql://localhost:5432/postgres/");
 	persistenceMap.put("javax.persistence.jdbc.user", "postgres");
 	persistenceMap.put("javax.persistence.jdbc.password", "postgres");
-//	persistenceMap.put("javax.persistence.jdbc.driver", "<driver>");
+	persistenceMap.put("javax.persistence.jdbc.driver", "org.postgresql.Driver");
 	emf = Persistence.createEntityManagerFactory("$objectdb/db/organizer_issues.odb", persistenceMap);
 }
 	 

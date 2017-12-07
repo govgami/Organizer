@@ -33,10 +33,10 @@ public class OrganizerIssueDaoImplJPA2 implements OrganizerIssueDao{
 	}
 //@Transactional
 	public Long createOrganizerIssue(OrganizerIssue oi) {
-		em.getTransaction().begin();
+//		em.getTransaction().begin();
 		em.persist(oi);
 		em.flush();
-		em.getTransaction().commit();
+//		em.getTransaction().commit();
 		return oi.getIssueID();
 	}
 //@Transactional

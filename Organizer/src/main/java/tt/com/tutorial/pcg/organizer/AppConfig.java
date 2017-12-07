@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScans(value = { @ComponentScan("tt.com.tutorial.pcg.organizer.db.issue"),
+@ComponentScans(value = { @ComponentScan("tt.com.tutorial.pcg.organizer.db.*"),
       @ComponentScan("tt.com.tutorial.pcg.organizer.service") })
 public class AppConfig {
 

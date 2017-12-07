@@ -32,10 +32,8 @@ public class DatabaseSetupTest {
 	@Test
 	public void shouldCreateSimpleObjectTest() {
 		//given
-		//EntityManager em=Connection.getNewconnection();
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 2);
 		//when
-		
 		OrganizerIssueService service=context.getBean(OrganizerIssueService.class);
 		Response resp=service.createOrganizerIssue(issue);
 //		em.getTransaction().begin();
@@ -55,9 +53,9 @@ public class DatabaseSetupTest {
 		//given
 		//EntityManager em=Connection.getNewconnection();
 		//when
-		OrganizerIssue issue = new OrganizerIssue("de", "pi", 2);
+		OrganizerIssue issue = new OrganizerIssue("de", "pi", 3);
 		
-		OrganizerIssueService service=new OrganizerIssueService();
+		OrganizerIssueService service=context.getBean(OrganizerIssueService.class);
 		//em.persist(issue);
 		//em.flush();
 

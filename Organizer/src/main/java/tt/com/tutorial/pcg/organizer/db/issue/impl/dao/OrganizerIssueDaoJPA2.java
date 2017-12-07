@@ -20,7 +20,7 @@ public class OrganizerIssueDaoJPA2 implements OrganizerIssueDao{
 	
 	static final String SELECT_BY_ID="select oi from OrganizerIssue where oi.issueId=?1";
 	
-	@PersistenceContext
+	@PersistenceContext(unitName="organizer")
 	private EntityManager em;
 
 	@Transactional

@@ -24,6 +24,7 @@ public class DatabaseSetupTest {
 	@Test
 	public void shouldWireManagerTest() {
 	      OrganizerIssueService service = context.getBean(OrganizerIssueService.class);
+
 		//then
 		Assert.assertNotNull(service);
 	}

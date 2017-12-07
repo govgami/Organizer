@@ -16,14 +16,9 @@ import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssueDao;
 @Service
 public class OrganizerIssueService {
 
-
+@Autowired
 	private OrganizerIssueDao organizerIssueDao;
 	
-	
-	@Autowired
-	public OrganizerIssueService(OrganizerIssueDao dao){
-		this.organizerIssueDao=dao;
-	}
 	
 	@POST
 	@Consumes({ MediaType.APPLICATION_JSON })

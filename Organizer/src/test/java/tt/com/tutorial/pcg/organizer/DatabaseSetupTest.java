@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssue;
@@ -15,15 +16,16 @@ import tt.com.tutorial.pcg.organizer.service.OrganizerIssueService;
 @SpringBootTest
 public class DatabaseSetupTest {
 //create table organizer_issue (id int not null primary key, name varchar(50) not null, descript varchar(500), priority int not null);
-
+	AnnotationConfigApplicationContext context = 
+            new AnnotationConfigApplicationContext(AppConfig.class);
 	//@PersistenceContext
 	//EntityManager em;
 	
 	@Test
 	public void shouldWireManagerTest() {
-
+	      OrganizerIssueService service = context.getBean(OrganizerIssueService.class);
 		//then
-//		Assert.assertNotNull(em);
+		Assert.assertNotNull(service);
 	}
 	
 	@Test
@@ -54,7 +56,7 @@ public class DatabaseSetupTest {
 		//when
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 2);
 		
-		OrganizerIssueService service=new OrganizerIssueService(new OrganizerIssueDaoJPA2());
+		OrganizerIssueService service=new OrganizerIssueService();
 		//em.persist(issue);
 		//em.flush();
 

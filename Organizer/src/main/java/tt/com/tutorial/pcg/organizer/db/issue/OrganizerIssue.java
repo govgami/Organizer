@@ -33,7 +33,7 @@ public class OrganizerIssue  implements Serializable{
 	public static final String ISSUE_PRIORITY="priority";
 	public static final String TABLE_NAME="organizer_issues";
 	
-	public static final String GET_BY_ID="issue_by_id";
+//	public static final String GET_BY_ID="issue_by_id";
 	
 	protected OrganizerIssue() {}
 	public OrganizerIssue(String issueName, String issueMemo, Integer issuePriority) {

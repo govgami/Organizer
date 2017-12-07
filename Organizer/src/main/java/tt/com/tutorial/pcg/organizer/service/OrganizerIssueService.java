@@ -30,4 +30,14 @@ public class OrganizerIssueService {
 		return Response.status(201)
 				.entity("A new resource has been created: "+oi.toString()).build();
 }
+	@POST
+	@Consumes({ MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.TEXT_HTML })
+	@Transactional
+	public Response updateOrganizerIssue(OrganizerIssue oi) {
+		organizerIssueDao.updateOrganizerIssue(oi);
+
+		return Response.status(201)
+				.entity("A resource has been updated: "+oi.toString()).build();
+}
 }

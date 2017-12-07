@@ -18,11 +18,10 @@ public class DatabaseSetupTest {
 
 	AnnotationConfigApplicationContext context = 
             new AnnotationConfigApplicationContext(AppConfig.class);
-	//@PersistenceContext
-	//EntityManager em;
 	
 	@Test
 	public void shouldWireManagerTest() {
+		//when
 	      OrganizerIssueService service = context.getBean(OrganizerIssueService.class);
 
 		//then
@@ -33,37 +32,29 @@ public class DatabaseSetupTest {
 	public void shouldCreateSimpleObjectTest() {
 		//given
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 2);
-		//when
 		OrganizerIssueService service=context.getBean(OrganizerIssueService.class);
+		//when
 		Response resp=service.createOrganizerIssue(issue);
-//		em.getTransaction().begin();
-//		em.persist(issue);
-//		em.flush();
-//		em.getTransaction().commit();
-
-		//em.getMetamodel().entity(OrganizerIssue.class);
 		
 		//then
-		//Assert.assertNotNull(dao!=null);
 		Assert.assertNotNull(/*dao.createOrganizerIssue(issue)*/issue.getIssueID());
+		System.out.println(resp.getEntity().toString());
 	}
 	
 	@Test
-	public void shouldCreateSimpleObjectWebTest() {
+	public void shouldUpdateSimpleObjectTest() {
 		//given
-		//EntityManager em=Connection.getNewconnection();
-		//when
-		OrganizerIssue issue = new OrganizerIssue("de", "pi", 3);
-		
+		OrganizerIssue issue = new OrganizerIssue("de", "pi", 12);
 		OrganizerIssueService service=context.getBean(OrganizerIssueService.class);
-		//em.persist(issue);
-		//em.flush();
-
-		//em.getMetamodel().entity(OrganizerIssue.class);
+		//when
+		Response resp=service.createOrganizerIssue(issue);
+		issue.setIssuePriority(14);
+		resp=service.updateOrganizerIssue(issue);
 		
 		//then
-		//Assert.assertNotNull(dao!=null);
-		Assert.assertNotNull(service.createOrganizerIssue(issue));
+		//Assert.assertNotNull(/*dao.createOrganizerIssue(issue)*/issue.getIssueID());
+		System.out.println(resp.getEntity().toString());
 	}
+	
 
 }

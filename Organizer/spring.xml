@@ -9,7 +9,6 @@
             <property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect"/>
      </bean>
      </property>
-        <property name="persistenceUnitName" value="organizer" />
         <property name="packagesToScan" >
             <list>
                 <value>tt.com.tutotrial.pcg.organizer.db.entity.*</value>
@@ -33,10 +32,11 @@
 </bean>
 <!-- impl transaction manager -->
 <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-    <property name="entityManagerFactory" ref="em"/>
+    <property name="entityManagerFactory" ref="emf"/>
 </bean>
-<!-- use it -->
-<bean id="em" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+<!-- use it as LocalEntityManagerFactoryBean -->
+<bean id="emf" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
     <property name="persistenceUnitName" value="organizer"/>
 </bean>
+<bean id="issueDao" class="tt.com.tutorial.pcg.organizer.db.issue.impl.dao.OrganizerIssueDaoJPA2"/>
 </beans>

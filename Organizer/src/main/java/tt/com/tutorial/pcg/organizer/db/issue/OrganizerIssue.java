@@ -16,7 +16,7 @@ public class OrganizerIssue  implements Serializable{
 	private static final long serialVersionUID = -5779250262246228208L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name=ISSUE_ID, nullable=false)
+	@Column(name=ISSUE_ID)
 	protected Long issueID;
 	@Column(name=ISSUE_NAME, nullable=false)
 	protected String issueName;

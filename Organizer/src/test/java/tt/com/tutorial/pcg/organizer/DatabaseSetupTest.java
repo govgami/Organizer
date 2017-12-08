@@ -1,7 +1,5 @@
 package tt.com.tutorial.pcg.organizer;
 
-import javax.ws.rs.core.Response;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,14 +8,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssue;
-import tt.com.tutorial.pcg.organizer.service.OrganizerIssueService;
+import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssueRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DatabaseSetupTest {
 
 	@Autowired
-	OrganizerIssueService service;
+	OrganizerIssueRepository repo;
 	// AnnotationConfigApplicationContext context =
 	// new AnnotationConfigApplicationContext(AppConfig.class);
 
@@ -27,7 +25,7 @@ public class DatabaseSetupTest {
 		// = context.getBean(OrganizerIssueService.class);
 
 		// then
-		Assert.assertNotNull(service);
+		Assert.assertNotNull(repo);
 	}
 
 	@Test
@@ -36,11 +34,10 @@ public class DatabaseSetupTest {
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 2);
 		// OrganizerIssueService service=context.getBean(OrganizerIssueService.class);
 		// when
-		Response resp = service.createOrganizerIssue(issue);
+		OrganizerIssue saved = repo.save(issue);
 
 		// then
-		Assert.assertNotNull(/* dao.createOrganizerIssue(issue) */issue.getIssueID());
-		System.out.println(resp.getEntity().toString());
+		Assert.assertNotNull(/* dao.createOrganizerIssue(issue) */saved.getIssueID());
 	}
 
 	@Test
@@ -49,13 +46,27 @@ public class DatabaseSetupTest {
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 12);
 		// OrganizerIssueService service=context.getBean(OrganizerIssueService.class);
 		// when
-		Response resp = service.createOrganizerIssue(issue);
+		issue = repo.save(issue);
 		issue.setIssuePriority(14);
-		resp = service.updateOrganizerIssue(issue);
+		OrganizerIssue issue2 = repo.save(issue);
+		// resp = service.updateOrganizerIssue(issue);
 
 		// then
 		// Assert.assertNotNull(/*dao.createOrganizerIssue(issue)*/issue.getIssueID());
-		System.out.println(resp.getEntity().toString());
+		Assert.assertEquals(14, issue2.getIssuePriority().intValue());
+	}
+
+	@Test
+	public void shouldGetSimpleObjectTest() {
+		// given
+		OrganizerIssue issue = new OrganizerIssue("de", "pi", 10);
+		issue = repo.save(issue);
+		// OrganizerIssueService service=context.getBean(OrganizerIssueService.class);
+		// when
+		OrganizerIssue issue2 = repo.getOne(issue.getIssueID());
+
+		// then
+		Assert.assertNotNull(issue2);
 	}
 
 }

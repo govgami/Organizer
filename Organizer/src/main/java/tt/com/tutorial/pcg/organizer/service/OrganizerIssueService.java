@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,7 @@ public class OrganizerIssueService {
 	private OrganizerIssueRepository organizerIssueDao;
 
 	@Transactional
-	@RequestMapping(value = "/plan", method = RequestMethod.POST, consumes = "application_json", produces = "text_html")
+	@RequestMapping(value = "/plan", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_HTML_VALUE)
 	public Response createOrganizerIssue(OrganizerIssue oi) {
 		OrganizerIssue saved = organizerIssueDao.save(oi);
 
@@ -29,7 +30,7 @@ public class OrganizerIssueService {
 	}
 
 	@Transactional
-	@RequestMapping(value = "/plan", method = RequestMethod.POST, consumes = "application_json", produces = "text_html")
+	@RequestMapping(value = "/plan", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_HTML_VALUE)
 	public Response updateOrganizerIssue(OrganizerIssue oi) {
 		OrganizerIssue saved = organizerIssueDao.save(oi);
 
@@ -51,5 +52,14 @@ public class OrganizerIssueService {
 
 		return Response.status(201).entity("A resources have been read: " + loaded.toString()).build();
 	}
+
+	// @RequestMapping(value = "/{name}", method = RequestMethod.GET)
+	// public Response welcome(@RequestParam(value = "name", required = false,
+	// defaultValue = "Stranger") String name) {
+	// Date d = new Date();
+	// String loaded = "Hello, now is: " + d.toString();
+	//
+	// return Response.status(201).entity(loaded).build();
+	// }
 
 }

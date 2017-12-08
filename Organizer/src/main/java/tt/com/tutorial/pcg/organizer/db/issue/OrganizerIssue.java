@@ -19,7 +19,7 @@ public class OrganizerIssue  implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name=ISSUE_ID)
-	protected Long issueID;
+	protected Long id;
 	@Column(name=ISSUE_NAME, nullable=false)
 	protected String issueName;
 	@Column(name=ISSUE_MEMO)
@@ -44,7 +44,7 @@ public class OrganizerIssue  implements Serializable{
 	
 	
 	public Long getIssueID() {
-		return issueID;
+		return id;
 	}
 
 	public String getIssueName() {

@@ -2,6 +2,6 @@ package tt.com.tutorial.pcg.organizer.db.issue;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface OrganizerIssueDao extends JpaRepository<OrganizerIssue, Long> {
+public interface OrganizerIssueRepository extends JpaRepository<OrganizerIssue, Long>, OrganizerIssueRepositoryCustom {
 
 }

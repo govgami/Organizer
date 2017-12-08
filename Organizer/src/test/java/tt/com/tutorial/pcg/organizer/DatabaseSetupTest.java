@@ -69,4 +69,17 @@ public class DatabaseSetupTest {
 		Assert.assertNotNull(issue2);
 	}
 
+	@Test
+	public void shouldRemoveSimpleObjectTest() {
+		// given
+		OrganizerIssue issue = new OrganizerIssue("de", "pi", 10);
+		issue = repo.save(issue);
+		// OrganizerIssueService service=context.getBean(OrganizerIssueService.class);
+		// when
+		OrganizerIssue issue2 = repo.getOne(issue.getIssueID());
+
+		// then
+		Assert.assertNotNull(issue2);
+	}
+
 }

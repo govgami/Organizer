@@ -33,13 +33,9 @@ public class OrganizerIssueService {
 		return organizerIssueDao.findAll();
 	}
 
-	// @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-	// public Response welcome(@RequestParam(value = "name", required = false,
-	// defaultValue = "Stranger") String name) {
-	// Date d = new Date();
-	// String loaded = "Hello, now is: " + d.toString();
-	//
-	// return Response.status(201).entity(loaded).build();
-	// }
+	public Long deleteOrganizerIssue(Long id) {
+		organizerIssueDao.delete(id);
+		return id;
+	}
 
 }

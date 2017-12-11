@@ -20,7 +20,7 @@ import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssue;
 import tt.com.tutorial.pcg.organizer.service.OrganizerIssueService;
 
 @RestController
-class AppController {
+class OrganizerAppController {
 
 	@Autowired
 	OrganizerIssueService organizerIssueService;
@@ -40,21 +40,28 @@ class AppController {
 	}
 
 	@Transactional
-	@RequestMapping(value = "/plan/c", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/plan/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public OrganizerIssue create(@RequestBody OrganizerIssue oi) {
 		return organizerIssueService.createOrganizerIssue(oi);
 	}
 
 	@Transactional
-	@RequestMapping(value = "/plan/u", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/edit/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public OrganizerIssue update(@RequestBody OrganizerIssue oi) {
 		return organizerIssueService.updateOrganizerIssue(oi);
 	}
 
 	@Transactional
 	@RequestMapping(value = "/get{id}", method = RequestMethod.GET)
-	public OrganizerIssue getSingle(@RequestParam("id") Long id) {
+	public OrganizerIssue retrieveSingle(@RequestParam("id") Long id) {
 		return organizerIssueService.getOrganizerIssue(id);
+
+	}
+
+	@Transactional
+	@RequestMapping(value = "/remove{id}", method = RequestMethod.GET)
+	public Long removeSingle(@RequestParam("id") Long id) {
+		return organizerIssueService.deleteOrganizerIssue(id);
 
 	}
 	// @RequestPath

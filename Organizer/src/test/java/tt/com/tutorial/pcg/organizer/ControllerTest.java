@@ -8,25 +8,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssue;
-import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssueRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DatabaseSetupTest {
+public class ControllerTest {
 
 	@Autowired
-	OrganizerIssueRepository repo;
-	// AnnotationConfigApplicationContext context =
-	// new AnnotationConfigApplicationContext(AppConfig.class);
-
-	@Test
-	public void shouldWireManagerTest() {
-		// when
-		// = context.getBean(OrganizerIssueService.class);
-
-		// then
-		Assert.assertNotNull(repo);
-	}
+	OrganizerAppController orgController;
 
 	@Test
 	public void shouldCreateSimpleObjectTest() {
@@ -34,7 +22,8 @@ public class DatabaseSetupTest {
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 2);
 
 		// when
-		OrganizerIssue saved = repo.save(issue);
+
+		OrganizerIssue saved = orgController.create(issue);
 
 		// then
 		Assert.assertNotNull(/* dao.createOrganizerIssue(issue) */saved.getIssueID());
@@ -46,10 +35,9 @@ public class DatabaseSetupTest {
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 12);
 
 		// when
-		issue = repo.save(issue);
+		issue = orgController.create(issue);
 		issue.setIssuePriority(14);
-		OrganizerIssue issue2 = repo.save(issue);
-		// resp = service.updateOrganizerIssue(issue);
+		OrganizerIssue issue2 = orgController.update(issue);
 
 		// then
 		Assert.assertEquals(14, issue2.getIssuePriority().intValue());
@@ -59,10 +47,10 @@ public class DatabaseSetupTest {
 	public void shouldGetSimpleObjectTest() {
 		// given
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 10);
-		issue = repo.save(issue);
+		issue = orgController.create(issue);
 
 		// when
-		OrganizerIssue issue2 = repo.findOne(issue.getIssueID());
+		OrganizerIssue issue2 = orgController.retrieveSingle(issue.getIssueID());
 
 		// then
 		Assert.assertNotNull(issue2);
@@ -72,15 +60,14 @@ public class DatabaseSetupTest {
 	public void shouldRemoveSimpleObjectTest() {
 		// given
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 10);
-		long id = repo.save(issue).getIssueID();
+		long id = orgController.create(issue).getIssueID();
 
 		// when
-		repo.delete(id);
+		orgController.removeSingle(id);
 		// Long id = issue2.getIssueID();
 		// repo.delete(id);
-		OrganizerIssue issue2 = repo.findOne(id);
+		OrganizerIssue issue2 = orgController.retrieveSingle(id);
 		// then
 		Assert.assertNull(issue2);
 	}
-
 }

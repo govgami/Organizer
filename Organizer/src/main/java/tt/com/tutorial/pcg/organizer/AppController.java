@@ -8,6 +8,8 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +24,12 @@ class AppController {
 
 	@Autowired
 	OrganizerIssueService organizerIssueService;
+
+	@GetMapping("/")
+	public String homePage(Model model) {
+		model.addAttribute("appName", "Organizer");
+		return "home";
+	}
 
 	@RequestMapping(value = "/greet{name}", method = RequestMethod.GET)
 	public Response welcome(@RequestParam(value = "name", required = false, defaultValue = "Stranger") String name) {

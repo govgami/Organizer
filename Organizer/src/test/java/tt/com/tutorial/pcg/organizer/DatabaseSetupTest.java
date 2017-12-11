@@ -32,7 +32,7 @@ public class DatabaseSetupTest {
 	public void shouldCreateSimpleObjectTest() {
 		// given
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 2);
-		// OrganizerIssueService service=context.getBean(OrganizerIssueService.class);
+
 		// when
 		OrganizerIssue saved = repo.save(issue);
 
@@ -44,7 +44,7 @@ public class DatabaseSetupTest {
 	public void shouldUpdateSimpleObjectTest() {
 		// given
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 12);
-		// OrganizerIssueService service=context.getBean(OrganizerIssueService.class);
+
 		// when
 		issue = repo.save(issue);
 		issue.setIssuePriority(14);
@@ -52,7 +52,6 @@ public class DatabaseSetupTest {
 		// resp = service.updateOrganizerIssue(issue);
 
 		// then
-		// Assert.assertNotNull(/*dao.createOrganizerIssue(issue)*/issue.getIssueID());
 		Assert.assertEquals(14, issue2.getIssuePriority().intValue());
 	}
 
@@ -61,7 +60,7 @@ public class DatabaseSetupTest {
 		// given
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 10);
 		issue = repo.save(issue);
-		// OrganizerIssueService service=context.getBean(OrganizerIssueService.class);
+
 		// when
 		OrganizerIssue issue2 = repo.getOne(issue.getIssueID());
 
@@ -74,7 +73,7 @@ public class DatabaseSetupTest {
 		// given
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 10);
 		issue = repo.save(issue);
-		// OrganizerIssueService service=context.getBean(OrganizerIssueService.class);
+
 		// when
 		OrganizerIssue issue2 = repo.getOne(issue.getIssueID());
 

@@ -38,4 +38,10 @@ public class OrganizerIssueService {
 		return id;
 	}
 
+	public Integer deleteOrganizerIssues(List<Long> group) {
+		List<OrganizerIssue> issues = organizerIssueDao.findAll(group);
+		organizerIssueDao.deleteInBatch(issues);
+		return group.size();
+	}
+
 }

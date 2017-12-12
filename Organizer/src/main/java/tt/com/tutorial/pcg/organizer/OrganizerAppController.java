@@ -1,13 +1,11 @@
 package tt.com.tutorial.pcg.organizer;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -16,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -63,6 +62,12 @@ public class OrganizerAppController {
 	 * return "home"; }
 	 */
 
+	@GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
+	public ModelAndView start() {
+
+		return new ModelAndView("index");
+	}
+
 	@RequestMapping(value = "/html5Test")
 	public ModelAndView html5Test() {
 
@@ -81,14 +86,28 @@ public class OrganizerAppController {
 		return new ModelAndView("bootstrapSpringGrid");
 	}
 
-	@GetMapping(value = "/greet{name}")
-	public @ResponseBody Response welcome(
-			@RequestParam(value = "name", required = false, defaultValue = "Stranger") String name) {
-		Date d = new Date();
-		String loaded = "Hello, " + name + ". now is: " + d.toString();
+	@RequestMapping(value = "/welcome")
+	public ModelAndView welcome() {
 
-		return Response.status(201).entity(loaded).build();
+		return new ModelAndView("index");
 	}
+
+	@RequestMapping("/next")
+	public String next(Model model,
+			@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+		model.addAttribute("name", name);
+		return "next";
+	}
+
+	// @GetMapping(value = "/greet{name}")
+	// public @ResponseBody Response welcome(
+	// @RequestParam(value = "name", required = false, defaultValue = "Stranger")
+	// String name) {
+	// Date d = new Date();
+	// String loaded = "Hello, " + name + ". now is: " + d.toString();
+	//
+	// return Response.status(201).entity(loaded).build();
+	// }
 
 	@Transactional
 	@PostMapping(value = PATH_ADD, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

@@ -2,11 +2,16 @@ package tt.com.tutorial.pcg.organizer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-@ComponentScan("tt.com.tutorial.pcg.organizer")
-public class OrganizerApplication {
+public class OrganizerApplication extends SpringBootServletInitializer {
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(OrganizerApplication.class);
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(OrganizerApplication.class, args);

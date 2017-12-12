@@ -11,6 +11,7 @@ public class OrganizerApplicationTests {
 
 	@Test
 	public void contextLoads() {
+
 	}
 
 }

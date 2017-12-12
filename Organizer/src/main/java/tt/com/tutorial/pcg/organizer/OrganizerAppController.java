@@ -66,19 +66,19 @@ public class OrganizerAppController {
 	@RequestMapping(value = "/html5Test")
 	public ModelAndView html5Test() {
 
-		return new ModelAndView("/html5/html5Test");
+		return new ModelAndView("html5Test");
 	}
 
 	@RequestMapping(value = "/bootstrapTest")
 	public ModelAndView bootstrapTest() {
 
-		return new ModelAndView("/bootstrapTest");
+		return new ModelAndView("bootstrapTest");
 	}
 
 	@RequestMapping(value = "/bootstrapSpringGrid")
 	public ModelAndView bootstrapSpringGrid() {
 
-		return new ModelAndView("/bootstrapSpringGrid");
+		return new ModelAndView("bootstrapSpringGrid");
 	}
 
 	@GetMapping(value = "/greet{name}")

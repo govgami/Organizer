@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssue;
@@ -19,7 +20,7 @@ public class ControllerTest {
 	@Test
 	public void shouldCreateSimpleObjectTest() {
 		// given
-		OrganizerIssue issue = new OrganizerIssue("de", "pi", 2);
+		OrganizerIssue issue = new OrganizerIssue("d1e", "pi", 2);
 
 		// when
 
@@ -32,7 +33,7 @@ public class ControllerTest {
 	@Test
 	public void shouldUpdateSimpleObjectTest() {
 		// given
-		OrganizerIssue issue = new OrganizerIssue("de", "pi", 12);
+		OrganizerIssue issue = new OrganizerIssue("de2", "pi", 12);
 
 		// when
 		issue = orgController.create(issue);
@@ -46,7 +47,7 @@ public class ControllerTest {
 	@Test
 	public void shouldGetSimpleObjectTest() {
 		// given
-		OrganizerIssue issue = new OrganizerIssue("de", "pi", 10);
+		OrganizerIssue issue = new OrganizerIssue("de3", "pi", 10);
 		issue = orgController.create(issue);
 
 		// when
@@ -59,7 +60,7 @@ public class ControllerTest {
 	@Test
 	public void shouldRemoveSimpleObjectTest() {
 		// given
-		OrganizerIssue issue = new OrganizerIssue("de", "pi", 10);
+		OrganizerIssue issue = new OrganizerIssue("de4", "pi", 10);
 		long id = orgController.create(issue).getIssueID();
 
 		// when
@@ -69,5 +70,38 @@ public class ControllerTest {
 		OrganizerIssue issue2 = orgController.retrieveSingle(id);
 		// then
 		Assert.assertNull(issue2);
+	}
+
+	@Test(expected = DataIntegrityViolationException.class)
+	public void shouldThrowExceptionCauseNotExistingPriorityAtSimpleObjectTest() {
+		// given
+		OrganizerIssue issue = new OrganizerIssue("de5", "pixe", null);
+
+		// when
+
+		orgController.create(issue);
+
+	}
+
+	@Test(expected = DataIntegrityViolationException.class)
+	public void shouldThrowExceptionCauseNotExistingNameAtSimpleObjectTest() {
+		// given
+		OrganizerIssue issue = new OrganizerIssue(null, "pixe", 2);
+
+		// when
+
+		orgController.create(issue);
+
+	}
+
+	@Test(expected = DataIntegrityViolationException.class)
+	public void shouldThrowExceptionCauseNotExistingFieldsAtSimpleObjectTest() {
+		// given
+		OrganizerIssue issue = new OrganizerIssue(null, "pixe", null);
+
+		// when
+
+		orgController.create(issue);
+
 	}
 }

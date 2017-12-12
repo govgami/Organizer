@@ -3,6 +3,10 @@ package tt.com.tutorial.pcg.organizer.exceptionhandler;
 import java.io.Serializable;
 
 public class HandlerResponse implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3738513853230415941L;
 	protected String header;
 	protected String message;
 

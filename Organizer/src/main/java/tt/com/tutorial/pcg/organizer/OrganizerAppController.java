@@ -6,23 +6,33 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssue;
+import tt.com.tutorial.pcg.organizer.exceptionhandler.HandlerResponse;
 import tt.com.tutorial.pcg.organizer.service.OrganizerIssueService;
 
-@RestController
+@EnableWebMvc
+@Controller
 public class OrganizerAppController {
 
 	@Autowired
@@ -72,7 +82,8 @@ public class OrganizerAppController {
 	}
 
 	@GetMapping(value = "/greet{name}")
-	public Response welcome(@RequestParam(value = "name", required = false, defaultValue = "Stranger") String name) {
+	public @ResponseBody Response welcome(
+			@RequestParam(value = "name", required = false, defaultValue = "Stranger") String name) {
 		Date d = new Date();
 		String loaded = "Hello, " + name + ". now is: " + d.toString();
 
@@ -81,33 +92,33 @@ public class OrganizerAppController {
 
 	@Transactional
 	@PostMapping(value = PATH_ADD, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public OrganizerIssue create(@RequestBody OrganizerIssue oi) {
+	public @ResponseBody OrganizerIssue create(@Valid @RequestBody OrganizerIssue oi) {
 		return organizerIssueService.createOrganizerIssue(oi);
 	}
 
 	@Transactional
 	@PostMapping(value = PATH_UPDATE, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public OrganizerIssue update(@RequestBody OrganizerIssue oi) {
+	public @ResponseBody OrganizerIssue update(@Valid @RequestBody OrganizerIssue oi) {
 		return organizerIssueService.updateOrganizerIssue(oi);
 	}
 
 	@Transactional
 	@GetMapping(value = PATH_RETRIEVE)
-	public OrganizerIssue retrieveSingle(@RequestParam("id") Long id) {
+	public @ResponseBody OrganizerIssue retrieveSingle(@Valid @RequestParam("id") Long id) {
 		return organizerIssueService.getOrganizerIssue(id);
 
 	}
 
 	@Transactional
 	@GetMapping(value = PATH_REMOVE)
-	public Long removeSingle(@RequestParam("id") Long id) {
+	public @ResponseBody Long removeSingle(@Valid @RequestParam("id") Long id) {
 		return organizerIssueService.deleteOrganizerIssue(id);
 
 	}
 
 	@Transactional
 	@GetMapping(value = PATH_REMOVE_GROUP)
-	public Integer removeGroup(@RequestParam("id") List<Long> id) {
+	public @ResponseBody Integer removeGroup(@Valid @RequestParam("id") List<Long> id) {
 		return organizerIssueService.deleteOrganizerIssues(id);
 
 	}
@@ -116,7 +127,7 @@ public class OrganizerAppController {
 
 	@Transactional
 	@GetMapping(value = PATH_RETRIEVE_ALL)
-	public List<OrganizerIssue> getAll() {
+	public @ResponseBody List<OrganizerIssue> getAll() {
 		return organizerIssueService.getOrganizerIssue();
 	}
 
@@ -124,7 +135,7 @@ public class OrganizerAppController {
 
 	@Transactional
 	@PostMapping(value = PATH_ADD_M, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String createModelled(HttpServletRequest req, HttpServletResponse resp) {
+	public @ResponseBody boolean createModelled(HttpServletRequest req, HttpServletResponse resp) {
 
 		String name = req.getParameter("name") == null ? "" : req.getParameter("name");
 		String memo = req.getParameter("memo") == null ? "" : req.getParameter("memo");
@@ -133,7 +144,7 @@ public class OrganizerAppController {
 		OrganizerIssue oi = new OrganizerIssue(name, memo, priority);
 		organizerIssueService.createOrganizerIssue(oi);
 		// set to boolean validated by non-null
-		return "bootstrapSpringGrid";
+		return null != oi;
 	}
 
 	// @Transactional
@@ -163,7 +174,7 @@ public class OrganizerAppController {
 
 	@Transactional
 	@PostMapping(value = PATH_REMOVE_GROUP_M)
-	public Integer removeGroupModelled(HttpServletRequest req, HttpServletResponse resp) {
+	public @ResponseBody boolean removeGroupModelled(HttpServletRequest req, HttpServletResponse resp) {
 		String checked = req.getParameter("checked") == null ? "" : req.getParameter("checked");
 
 		List<Long> issues = new ArrayList<Long>();
@@ -172,7 +183,7 @@ public class OrganizerAppController {
 			issues.add(new Long(s));
 		}
 		organizerIssueService.deleteOrganizerIssues(issues);
-		return issues.size();
+		return null != new Integer(issues.size());
 
 	}
 
@@ -180,8 +191,19 @@ public class OrganizerAppController {
 
 	@Transactional
 	@PostMapping(value = PATH_RETRIEVE_ALL_M)
-	public List<OrganizerIssue> getAllModelled(HttpServletRequest req, HttpServletResponse resp) {
+	public @ResponseBody List<OrganizerIssue> getAllModelled(HttpServletRequest req, HttpServletResponse resp) {
 		return organizerIssueService.getOrganizerIssue();
 	}
 
+	@ExceptionHandler({ DataIntegrityViolationException.class })
+	@ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE/* , reason = "wrong value" */)
+	public @ResponseBody HandlerResponse actOnException(DataIntegrityViolationException ve) {
+		return new HandlerResponse("violated", ve.getRootCause().getMessage());
+	}
+
+	@ExceptionHandler({ HttpMessageNotReadableException.class })
+	@ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE/* , reason = "omitted compulsory row" */)
+	public @ResponseBody HandlerResponse actOnException(HttpMessageNotReadableException ve) {
+		return new HandlerResponse("violated", ve.getRootCause().getMessage());
+	}
 }

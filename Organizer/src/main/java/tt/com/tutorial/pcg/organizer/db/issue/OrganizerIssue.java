@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
 
 //@NamedQuery(name=OrganizerIssue.GET_BY_ID, query="select oi from OrganizerIssue where oi.issueId=?1")
 @Table(name = OrganizerIssue.TABLE_NAME)
@@ -24,6 +25,7 @@ public class OrganizerIssue implements Serializable {
 	@Column(name = ISSUE_MEMO)
 	protected String issueMemo;
 	@Column(name = ISSUE_PRIORITY, nullable = false)
+	@Digits(fraction = 0, integer = 10)
 	protected Integer issuePriority;
 
 	public static final String ISSUE_ID = "id";

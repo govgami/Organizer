@@ -9,7 +9,7 @@ $(document).ready(function(){
 		     "searchable": false}
 		],
 		"ajax": {
-			"url": "/allUsages",
+			"url": "/allUsagesModel",
 			"type": "POST",
 			"success" :  function(data){
 				$.each(data, function(ind, obj){
@@ -38,7 +38,7 @@ $(document).ready(function(){
 	});
 	
 	$("#buttonInsert").click(function(){
-		$(this).callAjax("plan", "");
+		$(this).callAjax("planModel", "");
 		
 		$(".form-control").val("");
 		
@@ -51,7 +51,7 @@ $(document).ready(function(){
 			     						return this.value;
 			     					}).get().join(",");
 		
-		$(this).callAjax("remove", valuesChecked);
+		$(this).callAjax("removeModel", valuesChecked);
 		
 	});
 	

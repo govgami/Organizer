@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssue;
-import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssueRepository;
+import tt.com.organizer.db.issue.OrganizerIssue;
+import tt.com.organizer.db.issue.OrganizerIssueRepository;
 
 @Service
 public class OrganizerIssueService {

@@ -62,31 +62,31 @@ public class OrganizerAppController {
 	 * return "home"; }
 	 */
 
-	@GetMapping(value = "/start")
+	@GetMapping(value = "/start", produces = MediaType.TEXT_HTML_VALUE)
 	public ModelAndView start() {
 
 		return new ModelAndView("index");
 	}
 
-	@GetMapping(value = "/t")
+	@GetMapping(value = "/t", produces = MediaType.TEXT_HTML_VALUE)
 	public ModelAndView time() {
 
 		return new ModelAndView("time");
 	}
 
-	@GetMapping(value = "/bootstrapTest")
+	@GetMapping(value = "/bootstrapTest", produces = MediaType.TEXT_HTML_VALUE)
 	public ModelAndView bootstrapTest() {
 
 		return new ModelAndView("bootstrapTest");
 	}
 
-	@GetMapping(value = "/bootstrapSpringGrid")
+	@GetMapping(value = "/bootstrapSpringGrid", produces = MediaType.TEXT_HTML_VALUE)
 	public ModelAndView bootstrapSpringGrid() {
 
 		return new ModelAndView("bootstrapSpringGrid");
 	}
 
-	@GetMapping(value = "/")
+	@GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
 	public ModelAndView welcome(Map<String, Object> model) {
 		model.put("message", "hello");
 		return new ModelAndView("hello");

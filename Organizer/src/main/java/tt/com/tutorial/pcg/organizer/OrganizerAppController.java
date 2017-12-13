@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -63,37 +62,37 @@ public class OrganizerAppController {
 	 * return "home"; }
 	 */
 
-	@GetMapping(value = "/start", produces = MediaType.TEXT_HTML_VALUE)
+	@GetMapping(value = "/start")
 	public ModelAndView start() {
 
 		return new ModelAndView("index");
 	}
 
-	@RequestMapping(value = "/html5Test")
-	public ModelAndView html5Test() {
+	@GetMapping(value = "/t")
+	public ModelAndView time() {
 
-		return new ModelAndView("html5Test");
+		return new ModelAndView("time");
 	}
 
-	@RequestMapping(value = "/bootstrapTest")
+	@GetMapping(value = "/bootstrapTest")
 	public ModelAndView bootstrapTest() {
 
 		return new ModelAndView("bootstrapTest");
 	}
 
-	@RequestMapping(value = "/bootstrapSpringGrid")
+	@GetMapping(value = "/bootstrapSpringGrid")
 	public ModelAndView bootstrapSpringGrid() {
 
 		return new ModelAndView("bootstrapSpringGrid");
 	}
 
-	@RequestMapping(value = "/")
+	@GetMapping(value = "/")
 	public ModelAndView welcome(Map<String, Object> model) {
 		model.put("message", "hello");
 		return new ModelAndView("hello");
 	}
 
-	@RequestMapping("/next")
+	@GetMapping("/next")
 	public String next(Model model,
 			@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
 		model.addAttribute("name", name);

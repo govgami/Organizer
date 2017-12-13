@@ -9,11 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.bind.annotation.GetMapping;
+
 @WebServlet(name = "AnnotationExample", description = "Example Servlet Using Annotations", urlPatterns = {
 		"/AnnotationExample" })
 public class Example extends HttpServlet {
 
 	@Override
+	@GetMapping(value = "/AnnotationExample")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

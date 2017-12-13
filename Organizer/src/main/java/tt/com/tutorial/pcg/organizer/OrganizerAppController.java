@@ -2,6 +2,7 @@ package tt.com.tutorial.pcg.organizer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -62,7 +63,7 @@ public class OrganizerAppController {
 	 * return "home"; }
 	 */
 
-	@GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
+	@GetMapping(value = "/start", produces = MediaType.TEXT_HTML_VALUE)
 	public ModelAndView start() {
 
 		return new ModelAndView("index");
@@ -86,10 +87,10 @@ public class OrganizerAppController {
 		return new ModelAndView("bootstrapSpringGrid");
 	}
 
-	@RequestMapping(value = "/welcome")
-	public ModelAndView welcome() {
-
-		return new ModelAndView("index");
+	@RequestMapping(value = "/")
+	public ModelAndView welcome(Map<String, Object> model) {
+		model.put("message", "hello");
+		return new ModelAndView("hello");
 	}
 
 	@RequestMapping("/next")

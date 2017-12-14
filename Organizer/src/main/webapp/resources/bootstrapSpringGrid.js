@@ -9,14 +9,14 @@ $(document).ready(function(){
 		     "searchable": false}
 		],
 		"ajax": {
-			"url": "/allUsagesModel",
-			"type": "POST",
+			"url": "/allUsages",
+			"type": "GET",
 			"success" :  function(data){
 				$.each(data, function(ind, obj){
 					
 					issueClient.row.add([
-						obj.issueId,
-						"<input type='checkbox' value='"+obj.issueId+"' id=''>",
+						obj.issueID,
+						"<input type='checkbox' value='"+obj.issueID+"' id=''>",
 						obj.issueName,
 						obj.issueMemo,
 						obj.issuePriority

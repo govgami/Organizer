@@ -36,7 +36,7 @@ public class OrganizerIssue implements Serializable {
 
 	// public static final String GET_BY_ID="issue_by_id";
 
-	protected OrganizerIssue() {
+	public OrganizerIssue() {
 	}
 
 	public OrganizerIssue(String issueName, String issueMemo, Integer issuePriority) {

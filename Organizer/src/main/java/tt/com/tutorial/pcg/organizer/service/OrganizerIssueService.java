@@ -12,35 +12,35 @@ import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssueRepository;
 public class OrganizerIssueService {
 
 	@Autowired
-	private OrganizerIssueRepository organizerIssueDao;
+	private OrganizerIssueRepository organizerIssueRepo;
 
 	public OrganizerIssue createOrganizerIssue(OrganizerIssue oi) {
-		OrganizerIssue saved = organizerIssueDao.save(oi);
+		OrganizerIssue saved = organizerIssueRepo.save(oi);
 		return saved;
 	}
 
 	public OrganizerIssue updateOrganizerIssue(OrganizerIssue oi) {
-		OrganizerIssue saved = organizerIssueDao.save(oi);
+		OrganizerIssue saved = organizerIssueRepo.save(oi);
 		return saved;
 	}
 
 	public OrganizerIssue getOrganizerIssue(Long id) {
-		return organizerIssueDao.findOne(id);
+		return organizerIssueRepo.findOne(id);
 
 	}
 
 	public List<OrganizerIssue> getOrganizerIssue() {
-		return organizerIssueDao.findAll();
+		return organizerIssueRepo.findAll();
 	}
 
 	public Long deleteOrganizerIssue(Long id) {
-		organizerIssueDao.delete(id);
+		organizerIssueRepo.delete(id);
 		return id;
 	}
 
 	public Integer deleteOrganizerIssues(List<Long> group) {
-		List<OrganizerIssue> issues = organizerIssueDao.findAll(group);
-		organizerIssueDao.deleteInBatch(issues);
+		List<OrganizerIssue> issues = organizerIssueRepo.findAll(group);
+		organizerIssueRepo.deleteInBatch(issues);
 		return group.size();
 	}
 

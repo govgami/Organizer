@@ -47,7 +47,7 @@ $(document).ready(function(){
 	
 	$("#buttonDelete").click(function(){
 		
-		var valuesChecked = $("#tableClient input[type='checkbox']:checkbox:checked").map(
+		var valuesChecked = $("#issueClient input[type='checkbox']:checkbox:checked").map(
 			     					function () {
 			     						return this.value;
 			     					}).get().join(",");
@@ -62,7 +62,7 @@ $(document).ready(function(){
 			url: "/" + method,
 			dataType: "json",
 			timeout : 100000,
-			data: { issueName: $("#name").val(), memo: $("#memo").val(), issuePriority: $("#priority").val(), checked: checkeds },
+			data: { issueName: $("#name").val(), issueMemo: $("#memo").val(), issuePriority: $("#priority").val(), checked: checkeds },
 			
 			success: function(data){
 				tableClient.clear().draw();

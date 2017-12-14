@@ -52,7 +52,7 @@
 			<button type="button" id="buttonDelete" class="btn btn-warning">
 				<span class="glyphicon glyphicon-minus-sign"></span> Delete
 			</button>
-						<button type="button" id="buttonStupid" class="btn btn-warning">
+			<button type="button" id="buttonStupid" class="btn btn-warning">
 				<span class="glyphicon glyphicon-minus-sign"></span> Check
 			</button>
 		</div>
@@ -60,11 +60,11 @@
 			<table id="issueClient" class="table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th class="col-sm-1" data-field="iid">Id</th>
-						<th class="col-sm-1" data-field="icheckDelete"></th>
-						<th class="col-sm-3" data-field="iname">Name</th>
-						<th class="col-sm-3" data-field="imemo">Memo</th>
-						<th class="col-sm-2" data-field="ipriority">Priority</th>
+						<th class="col-sm-1" data-field="id">Id</th>
+						<th class="col-sm-1" data-field="checkDelete"></th>
+						<th class="col-sm-3" data-field="name">Name</th>
+						<th class="col-sm-3" data-field="memo">Memo</th>
+						<th class="col-sm-2" data-field="priority">Priority</th>
 					</tr>
 				</thead>
 			</table>

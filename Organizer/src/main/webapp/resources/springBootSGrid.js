@@ -1,20 +1,20 @@
 $(document).ready(function(){
 	
 	// Activated the table
-	var issueClient = $(document.getElementById('issueClient')).DataTable({
+	var tableClient = $('#issueClient').DataTable({
 		"autoWidth": false,
 		"columnDefs": [
 			{"targets": [ 0 ],
-		     "visible": true,
+		     "visible": false,
 		     "searchable": false}
 		],
 		"ajax": {
-			"url": "/allUsagesModel",
+			"url": "/allUsages",
 			"type": "POST",
 			"success" :  function(data){
 				$.each(data, function(ind, obj){
 					
-					issueClient.row.add([
+					tableClient.row.add([
 						obj.issueID,
 						"<input type='checkbox' value='"+obj.issueID+"' id=''>",
 						obj.issueName,
@@ -25,47 +25,49 @@ $(document).ready(function(){
 			}
 		},
 	});
+	
     
 	
 	$(window).load(function() {
 		
 	});
 	
-	$(document.getElementById("buttonSearch").onclick=function(){
-		issueClient.clear().draw();
-		issueClient.ajax.reload();
+	$("#buttonSearch").click(function(){
+		tableClient.clear().draw();
+		tableClient.ajax.reload();
 		
 	});
 	
-	$(document.getElementById("buttonInsert").onclick=function(){
-		$(this).callAjax("planModel", "");
+	$("#buttonInsert").click(function(){
+		$(this).callAjax("insertClient", "");
 		
 		$(".form-control").val("");
 		
 	});
 	
-	$(document.getElementById("buttonDelete").onclick=function(){
+	$("#buttonDelete").click(function(){
 		
-		var valuesChecked = $("#issueClient input[type='checkbox']:checkbox:checked").map(
+		var valuesChecked = $("#tableClient input[type='checkbox']:checkbox:checked").map(
 			     					function () {
 			     						return this.value;
 			     					}).get().join(",");
 		
-		$(this).callAjax("removeModel", valuesChecked);
+		$(this).callAjax("deleteClient", valuesChecked);
 		
 	});
+	
 	$.fn.callAjax = function( method, checkeds ){
 		$.ajax({
 			type: "POST",
-			url: "/" + method,
+			url: "/BootstrapSpringProject/" + method,
 			dataType: "json",
 			timeout : 100000,
-			data: { name: $("#name").val(), memo: $("#memo").val(),
-						priority: $("#priority").val(), checked: checkeds },
+			data: { name: $("#name").val(), lastname: $("#lastname").val(), dateBirth: $("#dateBirth").val(), 
+						register: $("#register").val(), checked: checkeds },
 			
 			success: function(data){
-				issueClient.clear().draw();
-				issueClient.ajax.reload();
+				tableClient.clear().draw();
+				tableClient.ajax.reload();
 			},
 			error: function(e){
 				alert("ERROR: ", e);

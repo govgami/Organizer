@@ -167,7 +167,7 @@ public class OrganizerAppController {
 		OrganizerIssue oi = new OrganizerIssue(name, memo, priority);
 		organizerIssueService.createOrganizerIssue(oi);
 		// set to boolean validated by non-null
-		return null != oi;
+		return oi != null;
 	}
 
 	// @Transactional
@@ -206,7 +206,7 @@ public class OrganizerAppController {
 			issues.add(new Long(s));
 		}
 		organizerIssueService.deleteOrganizerIssues(issues);
-		return null != new Integer(issues.size());
+		return new Integer(issues.size()) != null;
 
 	}
 

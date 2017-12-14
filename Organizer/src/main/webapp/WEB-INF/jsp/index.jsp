@@ -6,13 +6,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Example Organizer</title>
  
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<script src="resources/static/js/jquery-2.2.3.min.js"></script>
+<script src="resources/static/js/bootstrap/js/bootstrap.js"></script>
+<script src="resources/static/js/bootstrap/js/moment.js"></script>
+<script src="resources/static/js/bootstrap/js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+<link rel="stylesheet" href="resources/static/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
-<script src="bootstrapSpringGrid.js"></script>
+
+<script src="resources/bootstrapSpringGrid.js"></script>
  
  
  

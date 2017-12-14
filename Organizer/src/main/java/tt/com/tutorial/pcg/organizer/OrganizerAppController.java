@@ -216,6 +216,7 @@ public class OrganizerAppController {
 	@PostMapping(value = PATH_RETRIEVE_ALL_M)
 	@ResponseBody
 	public List<OrganizerIssue> allUsagesModel(HttpServletRequest req, HttpServletResponse resp) {
+		System.out.println("called: " + PATH_RETRIEVE_ALL_M);
 		return organizerIssueService.getOrganizerIssue();
 	}
 

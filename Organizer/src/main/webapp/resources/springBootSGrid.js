@@ -9,7 +9,7 @@ $(document).ready(function(){
 		     "searchable": false}
 		],
 		"ajax": {
-			"url": "/allUsages",
+			"url": "/allUsagesModel/",
 			"type": "POST",
 			"success" :  function(data){
 				$.each(data, function(ind, obj){
@@ -39,7 +39,7 @@ $(document).ready(function(){
 	});
 	
 	$("#buttonInsert").click(function(){
-		$(this).callAjax("insertClient", "");
+		$(this).callAjax("createModel/", "");
 		
 		$(".form-control").val("");
 		
@@ -52,18 +52,17 @@ $(document).ready(function(){
 			     						return this.value;
 			     					}).get().join(",");
 		
-		$(this).callAjax("deleteClient", valuesChecked);
+		$(this).callAjax("removeModel/", valuesChecked);
 		
 	});
 	
 	$.fn.callAjax = function( method, checkeds ){
 		$.ajax({
 			type: "POST",
-			url: "/BootstrapSpringProject/" + method,
+			url: "/" + method,
 			dataType: "json",
 			timeout : 100000,
-			data: { name: $("#name").val(), lastname: $("#lastname").val(), dateBirth: $("#dateBirth").val(), 
-						register: $("#register").val(), checked: checkeds },
+			data: { issueName: $("#name").val(), memo: $("#memo").val(), issuePriority: $("#priority").val(), checked: checkeds },
 			
 			success: function(data){
 				tableClient.clear().draw();

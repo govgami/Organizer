@@ -24,13 +24,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssue;
 import tt.com.tutorial.pcg.organizer.exceptionhandler.HandlerResponse;
 import tt.com.tutorial.pcg.organizer.service.OrganizerIssueService;
 
-@EnableWebMvc
 @Controller
 public class OrganizerAppController {
 

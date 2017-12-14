@@ -37,6 +37,39 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
+					<!-- Tomcat embedded container-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- some dependencies for web -->
+<dependency>
+			<groupId>javax.servlet.jsp.jstl</groupId>
+			<artifactId>javax.servlet.jsp.jstl-api</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>javax.servlet.jsp.jstl</artifactId>
+			<version>1.2.1</version>
+			<exclusions>
+				<!-- jstl-api was adding selvlet-api 2.5 and jsp-api -->
+				<exclusion>
+					<artifactId>jstl-api</artifactId>
+					<groupId>javax.servlet.jsp.jstl</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<!-- JSP with tomcat -->
+		<dependency>
+    <groupId>org.apache.tomcat.embed</groupId>
+    <artifactId>tomcat-embed-jasper</artifactId>
+    <scope>provided</scope>
+</dependency>
 
 		<dependency>
 			<groupId>org.postgresql</groupId>

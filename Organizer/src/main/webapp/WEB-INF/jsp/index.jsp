@@ -7,9 +7,9 @@
 <title>Example Organizer</title>
  
 <script src="resources/static/js/jquery-2.2.3.min.js"></script>
-<script src="resources/static/js/bootstrap/js/bootstrap.js"></script>
-<script src="resources/static/js/bootstrap/js/moment.js"></script>
-<script src="resources/static/js/bootstrap/js/bootstrap-datetimepicker.js"></script>
+<script src="resources/static/js/bootstrap.js"></script>
+<script src="resources/static/js/moment.js"></script>
+<script src="resources/static/js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
 <link rel="stylesheet" href="resources/static/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css">

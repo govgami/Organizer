@@ -215,7 +215,7 @@ public class OrganizerAppController {
 	@Transactional
 	@PostMapping(value = PATH_RETRIEVE_ALL_M)
 	@ResponseBody
-	public List<OrganizerIssue> getAllModelled(HttpServletRequest req, HttpServletResponse resp) {
+	public List<OrganizerIssue> allUsagesModel(HttpServletRequest req, HttpServletResponse resp) {
 		return organizerIssueService.getOrganizerIssue();
 	}
 

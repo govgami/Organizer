@@ -5,12 +5,12 @@ $(document).ready(function(){
 		"autoWidth": false,
 		"columnDefs": [
 			{"targets": [ 0 ],
-		     "visible": false,
+		     "visible": true,
 		     "searchable": false}
 		],
 		"ajax": {
-			"url": "/allUsages",
-			"type": "GET",
+			"url": "/allUsagesModel",
+			"type": "POST",
 			"success" :  function(data){
 				$.each(data, function(ind, obj){
 					
@@ -31,20 +31,20 @@ $(document).ready(function(){
 		
 	});
 	
-	$("#buttonSearch").click(function(){
+	$(document.getElementById("buttonSearch").onclick=function(){
 		issueClient.clear().draw();
 		issueClient.ajax.reload();
 		
 	});
 	
-	$("#buttonInsert").click(function(){
+	$(document.getElementById("buttonInsert").onclick=function(){
 		$(this).callAjax("planModel", "");
 		
 		$(".form-control").val("");
 		
 	});
 	
-	$("#buttonDelete").click(function(){
+	$(document.getElementById("buttonDelete").onclick=function(){
 		
 		var valuesChecked = $("#issueClient input[type='checkbox']:checkbox:checked").map(
 			     					function () {
@@ -54,7 +54,6 @@ $(document).ready(function(){
 		$(this).callAjax("removeModel", valuesChecked);
 		
 	});
-	
 	$.fn.callAjax = function( method, checkeds ){
 		$.ajax({
 			type: "POST",
@@ -75,3 +74,5 @@ $(document).ready(function(){
 	} 
 	 
 });
+
+$(document.getElementById("buttonStupid").onclick=function(){document.getElementById("buttonStupid").innerHTML='bing!'});

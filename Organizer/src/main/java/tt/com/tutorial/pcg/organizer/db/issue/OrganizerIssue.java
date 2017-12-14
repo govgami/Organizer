@@ -49,6 +49,10 @@ public class OrganizerIssue implements Serializable {
 		return issueID;
 	}
 
+	public void setIssueID(Long issueID) {
+		this.issueID = issueID;
+	}
+
 	public String getIssueName() {
 		return issueName;
 	}

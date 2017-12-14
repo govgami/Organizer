@@ -1,6 +1,7 @@
 package tt.com.organizer.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,8 @@ public class OrganizerIssueService {
 		return saved;
 	}
 
-	public OrganizerIssue getOrganizerIssue(Long id) {
-		return organizerIssueDao.findOne(id);
+	public Optional<OrganizerIssue> getOrganizerIssue(Long id) {
+		return organizerIssueDao.findById(id);
 
 	}
 
@@ -34,12 +35,12 @@ public class OrganizerIssueService {
 	}
 
 	public Long deleteOrganizerIssue(Long id) {
-		organizerIssueDao.delete(id);
+		organizerIssueDao.deleteById(id);
 		return id;
 	}
 
 	public Integer deleteOrganizerIssues(List<Long> group) {
-		List<OrganizerIssue> issues = organizerIssueDao.findAll(group);
+		List<OrganizerIssue> issues = organizerIssueDao.findAllById(group);
 		organizerIssueDao.deleteInBatch(issues);
 		return group.size();
 	}

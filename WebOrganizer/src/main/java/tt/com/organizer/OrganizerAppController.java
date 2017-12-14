@@ -26,9 +26,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssue;
-import tt.com.tutorial.pcg.organizer.exceptionhandler.HandlerResponse;
-import tt.com.tutorial.pcg.organizer.service.OrganizerIssueService;
+import tt.com.organizer.db.issue.OrganizerIssue;
+import tt.com.organizer.exceptionhandler.HandlerResponse;
+import tt.com.organizer.service.OrganizerIssueService;
 
 @EnableWebMvc
 @Controller
@@ -124,7 +124,7 @@ public class OrganizerAppController {
 	@Transactional
 	@GetMapping(value = PATH_RETRIEVE)
 	public @ResponseBody OrganizerIssue retrieveSingle(@Valid @RequestParam("id") Long id) {
-		return organizerIssueService.getOrganizerIssue(id);
+		return organizerIssueService.getOrganizerIssue(id).get();
 
 	}
 

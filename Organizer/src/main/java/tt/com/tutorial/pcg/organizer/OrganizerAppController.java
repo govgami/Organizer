@@ -84,6 +84,12 @@ public class OrganizerAppController {
 		return new ModelAndView("bootstrapSpringGrid");
 	}
 
+	@GetMapping(value = "/organizer", produces = MediaType.TEXT_HTML_VALUE)
+	public ModelAndView organizer() {
+
+		return new ModelAndView("organizer");
+	}
+
 	@GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
 	public ModelAndView welcome(Map<String, Object> model) {
 		model.put("message", "hello");

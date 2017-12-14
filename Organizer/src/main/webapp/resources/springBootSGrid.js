@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
 	// Activated the table
-	var issueClient = $('#issueClient').DataTable({
+	var issueClient = $(document.getElementById('issueClient')).DataTable({
 		"autoWidth": false,
 		"columnDefs": [
 			{"targets": [ 0 ],

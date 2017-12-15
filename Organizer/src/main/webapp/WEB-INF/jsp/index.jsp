@@ -12,7 +12,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
-<script src="resources/springBootS.js"></script>
+<script src="resources/springBootSGrid.js"></script>
  
  
  
@@ -26,7 +26,7 @@
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="/">Home</a></li>
+					<li class="active"><a href="#">Home</a></li>
 					<li><a href="#about">About</a></li>
 				</ul>
 			</div>
@@ -73,11 +73,11 @@
 			<table id="issueClient" class="table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th class="col-sm-1" data-field="id">Id</th>
-						<th class="col-sm-1" data-field="checkDelete"></th>
-						<th class="col-sm-3" data-field="name">Name</th>
-						<th class="col-sm-3" data-field="memo">Memo</th>
-						<th class="col-sm-2" data-field="priority">Priority</th>
+						<th class="col-sm-1" data-field="iid">Id</th>
+						<th class="col-sm-1" data-field="icheckDelete"></th>
+						<th class="col-sm-3" data-field="iname">Name</th>
+						<th class="col-sm-3" data-field="imemo">Memo</th>
+						<th class="col-sm-2" data-field="ipriority">Priority</th>
 					</tr>
 				</thead>
 			</table>

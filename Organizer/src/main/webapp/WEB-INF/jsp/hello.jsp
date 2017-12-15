@@ -22,15 +22,17 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-inverse">
-		<div class="container">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Spring Boot</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
+				<a class="navbar-brand" href="#">Welcome</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
+					<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+					<li class="nav-item"><a href="/organizer/">Issues</a></li>
+					<li class="nav-item"><a href="#about">About</a></li>
 				</ul>
 			</div>
 		</div>
@@ -39,13 +41,11 @@
 	<div class="container">
 
 		<div class="starter-template">
-			<h1>Spring Boot Web JSP Example</h1>
-			<h2>Message: ${message}</h2>
+			<h1>Welcome</h1>
+			<h2>${message}</h2>
 		</div>
 
 	</div>
-
-	<script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 </body>
 

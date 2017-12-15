@@ -51,7 +51,7 @@ $(document).ready(function(){
 			     						return this.value;
 			     					}).get().join(",");
 		
-		$(this).callAjax("removeModel", valuesChecked);
+		$(this).callAjax("removeModel/", valuesChecked);
 		
 	});
 	

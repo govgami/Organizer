@@ -2,8 +2,8 @@ function empty(){};
 function createRow(){}
 function deleteRows(){}
 
-function changeButtonText(){ document.getElementById("buttonStupid").innerHtml='???';
-document.getElementById("buttonStupid").firstElementChild.text='Stupid';};
+function changeButtonText(){ document.title=(document.getElementById("buttonStupid").textContent);
+document.getElementById("buttonStupid").textContent="Stupid";};
 	
 function bingTitle(){ document.title="bing"};
 
@@ -27,6 +27,7 @@ function call( method, checkeds ){
 		success: function(data){
 			document.getElementById("tableClient").clear().draw();
 			document.getElementById("tableClient").ajax.reload();
+			alarm("Called ajax");
 		},
 		error: function(e){
 			alert("ERROR: ", e);

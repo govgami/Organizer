@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Example Organizer</title>
  
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
@@ -52,7 +52,7 @@
 			<button type="button" id="buttonDelete" class="btn btn-warning">
 				<span class="glyphicon glyphicon-minus-sign"></span> Delete
 			</button>
-			<button type="button" id="buttonStupid" class="btn btn-warning">
+			<button type="button" id="buttonStupid" class="btn btn-warning" onclick="changeButtonText()">
 				<span class="glyphicon glyphicon-minus-sign"></span> Check
 			</button>
 		</div>

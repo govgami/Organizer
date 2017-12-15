@@ -9,7 +9,7 @@ function bingTitle(){ document.title="bing"};
 
 function addIssue(){
 	
-	call("planModel", "");
+	call("planModel/", "");
 	
 	$(".form-control").val("");
 	
@@ -35,4 +35,36 @@ function call( method, checkeds ){
 	});
 } 
 	
+
+// Activated the table
+var tableClient = $('#issueClient').DataTable({
+	"autoWidth": false,
+	"columnDefs": [
+		{"targets": [ 0 ],
+	     "visible": false,
+	     "searchable": false}
+	],
+	"ajax": {
+		"url": "/allUsagesModel",
+		"type": "POST",
+		"success" :  function(data){
+			$.each(data, function(ind, obj){
+				
+				tableClient.row.add([
+					obj.issueID,
+					"<input type='checkbox' value='"+obj.issueID+"' id=''>",
+					obj.issueName,
+					obj.issueMemo,
+					obj.issuePriority
+				]).draw();
+			});
+		}
+	},
+});
+
+$("#buttonSearch").click(function(){
+	tableClient.clear().draw();
+	tableClient.ajax.reload();
+	
+});
 

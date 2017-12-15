@@ -158,7 +158,7 @@ public class OrganizerAppController {
 
 	@Transactional
 	@PostMapping(value = PATH_ADD_M, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody boolean createModelled(HttpServletRequest req, HttpServletResponse resp) {
+	public @ResponseBody Boolean createModelled(HttpServletRequest req, HttpServletResponse resp) {
 
 		String name = req.getParameter("issueName") == null ? "" : req.getParameter("issueName");
 		String memo = req.getParameter("issueMemo") == null ? "" : req.getParameter("issueMemo");
@@ -198,7 +198,7 @@ public class OrganizerAppController {
 
 	@Transactional
 	@PostMapping(value = PATH_REMOVE_GROUP_M)
-	public @ResponseBody boolean removeGroupModelled(HttpServletRequest req, HttpServletResponse resp) {
+	public @ResponseBody Boolean removeGroupModelled(HttpServletRequest req, HttpServletResponse resp) {
 		String checked = req.getParameter("checked") == null ? "" : req.getParameter("checked");
 
 		List<Long> issues = new ArrayList<Long>();
@@ -215,8 +215,7 @@ public class OrganizerAppController {
 
 	@Transactional
 	@PostMapping(value = PATH_RETRIEVE_ALL_M)
-	@ResponseBody
-	public List<OrganizerIssue> allUsagesModel(HttpServletRequest req, HttpServletResponse resp) {
+	public @ResponseBody List<OrganizerIssue> allUsagesModel(HttpServletRequest req, HttpServletResponse resp) {
 		System.out.println("called: " + PATH_RETRIEVE_ALL_M);
 		return organizerIssueService.getOrganizerIssue();
 	}

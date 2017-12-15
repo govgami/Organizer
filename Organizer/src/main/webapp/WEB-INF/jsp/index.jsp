@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Example Organizer</title>
  
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
@@ -44,7 +44,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<button type="button" id="buttonSearch" class="btn btn-info" onclick="bingTitle()">
+			<button type="button" id="buttonSearch" class="btn btn-info">
 				Search <span class="glyphicon glyphicon-search"></span>
 			</button>
 			<button type="button" id="buttonInsert" class="btn btn-success">
@@ -56,6 +56,19 @@
 			<button type="button" id="buttonStupid" class="btn btn-warning" onclick="changeButtonText()">
 				Check <span class="glyphicon glyphicon-minus-sign"></span>
 			</button>
+		</div>
+		<div>
+			<table id="issueClient" class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th class="col-sm-1" data-field="id">Id</th>
+						<th class="col-sm-1" data-field="checkDelete"></th>
+						<th class="col-sm-3" data-field="name">Name</th>
+						<th class="col-sm-3" data-field="memo">Memo</th>
+						<th class="col-sm-2" data-field="priority">Priority</th>
+					</tr>
+				</thead>
+			</table>
 		</div>
 	</form>
 </div>

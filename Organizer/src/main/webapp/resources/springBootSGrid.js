@@ -1,4 +1,6 @@
 function empty(){};
+function changeButtonText(){ document.title=(document.getElementById("buttonStupid").textContent);
+document.getElementById("buttonStupid").textContent="Stupid";};
 
 $(document).ready(function(){
 	
@@ -11,7 +13,7 @@ $(document).ready(function(){
 		     "searchable": false}
 		],
 		"ajax": {
-			"url": "/allUsagesModel/",
+			"url": "/allUsagesModel",
 			"type": "POST",
 			"success" :  function(data){
 				$.each(data, function(ind, obj){
@@ -29,7 +31,7 @@ $(document).ready(function(){
 	});
     
 	
-	$(window).load(empty());
+	$(window).on("load", empty());
 	
 	$("#buttonSearch").click(function(){
 		tableClient.clear().draw();
@@ -38,7 +40,7 @@ $(document).ready(function(){
 	});
 	
 	$("#buttonInsert").click(function(){
-		$(this).callAjax("planModel", "");
+		$(this).callAjax("planModel/", "");
 		
 		$(".form-control").val("");
 		

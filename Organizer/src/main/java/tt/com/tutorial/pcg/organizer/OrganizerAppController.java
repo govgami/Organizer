@@ -72,10 +72,10 @@ public class OrganizerAppController {
 		return new ModelAndView("time");
 	}
 
-	@GetMapping(value = "/bootstrapTest", produces = MediaType.TEXT_HTML_VALUE)
-	public ModelAndView bootstrapTest() {
+	@GetMapping(value = "/bootstrapTest")
+	public String bootstrapTest() {
 
-		return new ModelAndView("bootstrapTest");
+		return "redirect:/organizer";
 	}
 
 	@GetMapping(value = "/bootstrapSpringGrid", produces = MediaType.TEXT_HTML_VALUE)

@@ -60,11 +60,11 @@
 			<table id="issueClient" class="table table-bordered table-striped">
 				<thead>
 					<tr>
-						<th class="col-sm-1" data-field="id">Id</th>
-						<th class="col-sm-1" data-field="checkDelete"></th>
-						<th class="col-sm-3" data-field="name">Name</th>
-						<th class="col-sm-3" data-field="memo">Memo</th>
-						<th class="col-sm-2" data-field="priority">Priority</th>
+						<th class="col-sm-1" data-field="tid">Id</th>
+						<th class="col-sm-1" data-field="tcheckDelete"></th>
+						<th class="col-sm-3" data-field="tname">Name</th>
+						<th class="col-sm-3" data-field="tmemo">Memo</th>
+						<th class="col-sm-2" data-field="tpriority">Priority</th>
 					</tr>
 				</thead>
 			</table>

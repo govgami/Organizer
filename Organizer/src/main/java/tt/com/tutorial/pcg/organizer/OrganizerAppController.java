@@ -157,9 +157,10 @@ public class OrganizerAppController {
 	// modelled
 
 	@Transactional
-	@PostMapping(value = PATH_ADD_M, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = PATH_ADD_M)
 	public @ResponseBody Boolean createModelled(HttpServletRequest req, HttpServletResponse resp) {
 
+		System.out.println(req.getAttributeNames());
 		String name = req.getParameter("issueName") == null ? "" : req.getParameter("issueName");
 		String memo = req.getParameter("issueMemo") == null ? "" : req.getParameter("issueMemo");
 		Integer priority = req.getParameter("issuePriority") == null ? null

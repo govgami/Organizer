@@ -160,9 +160,10 @@ public class OrganizerAppController {
 	@PostMapping(value = PATH_ADD_M, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody boolean createModelled(HttpServletRequest req, HttpServletResponse resp) {
 
-		String name = req.getParameter("name") == null ? "" : req.getParameter("name");
-		String memo = req.getParameter("memo") == null ? "" : req.getParameter("memo");
-		Integer priority = req.getParameter("priority") == null ? null : Integer.parseInt(req.getParameter("priority"));
+		String name = req.getParameter("issueName") == null ? "" : req.getParameter("issueName");
+		String memo = req.getParameter("issueMemo") == null ? "" : req.getParameter("issueMemo");
+		Integer priority = req.getParameter("issuePriority") == null ? null
+				: Integer.parseInt(req.getParameter("issuePriority"));
 
 		OrganizerIssue oi = new OrganizerIssue(name, memo, priority);
 		organizerIssueService.createOrganizerIssue(oi);

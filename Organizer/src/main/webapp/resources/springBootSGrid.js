@@ -58,10 +58,10 @@ $(document).ready(function(){
 	$.fn.callAjax = function( method, checkeds ){
 		$.ajax({
 			type: "POST",
-			url: "/BootstrapSpringProject/" + method,
+			url: "/" + method,
 			dataType: "json",
 			timeout : 100000,
-			data: { name: $("#name").val(), lastname: $("#memo").val(), dateBirth: $("#properties").val(), checked: checkeds },
+			data: { issueName: $("#name").val(), issueMemo: $("#memo").val(), issuePriority: $("#priority").val(), checked: checkeds },
 			
 			success: function(data){
 				tableClient.clear().draw();

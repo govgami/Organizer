@@ -37,7 +37,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-sm-2" for="register">Priority:</label>
+			<label class="control-label col-sm-2" for="priority">Priority:</label>
 			<div class="col-sm-10">
 				<input type="number" class="form-control" id="priority" placeholder="Priority">
 			</div>

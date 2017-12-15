@@ -19,23 +19,22 @@
 	<spring:url value="/css/main.css" var="springCss" />
 	<link href="${springCss}" rel="stylesheet" />
 	 -->
-	<c:url value="resources/static/css/main.css" var="jstlCss" />
-	<link href="${jstlCss}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="resources/static/css/dark.css" />
 
 </head>
 <body>
 
 	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
+		<div class="container-fluid" id="topNavi">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">Welcome</a>
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
 				
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav navbar-left">
 					<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
-					<li class="nav-item"><a href="bootstrapTest/">Issues</a></li>
+					<li class="nav-item"><a href="/organizer">Issues</a></li>
 					<li class="nav-item"><a href="#about">About</a></li>
 				</ul>
 			</div>
@@ -47,6 +46,7 @@
 		<div class="starter-template">
 			<h1>Welcome</h1>
 			<h2>${message}</h2>
+			Where you'd like to go?
 		</div>
 
 	</div>

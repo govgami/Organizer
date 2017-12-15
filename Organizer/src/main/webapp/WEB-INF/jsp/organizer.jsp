@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
 <script type="text/javascript" src="resources/springBootSGrid.js"></script>
- 
+ 	<link rel="stylesheet" type="text/css" href="resources/static/css/dark.css" />
  
  
  

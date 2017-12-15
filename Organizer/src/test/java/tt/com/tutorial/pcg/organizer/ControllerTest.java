@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import tt.com.tutorial.pcg.organizer.controller.OrganizerIssueController;
 import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssue;
 
 @RunWith(SpringRunner.class)
@@ -15,7 +16,7 @@ import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssue;
 public class ControllerTest {
 
 	@Autowired
-	OrganizerAppController orgController;
+	OrganizerIssueController orgController;
 
 	@Test
 	public void shouldCreateSimpleObjectTest() {

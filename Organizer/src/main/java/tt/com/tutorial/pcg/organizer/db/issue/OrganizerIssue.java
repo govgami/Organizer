@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Size;
 
 @Table(name = OrganizerIssue.TABLE_NAME)
 @Entity
@@ -20,6 +21,7 @@ public class OrganizerIssue implements Serializable {
 	@Column(name = ISSUE_ID)
 	protected Long issueID;
 	@Column(name = ISSUE_NAME, nullable = false)
+	@Size(min = 1)
 	protected String issueName;
 	@Column(name = ISSUE_MEMO)
 	protected String issueMemo;

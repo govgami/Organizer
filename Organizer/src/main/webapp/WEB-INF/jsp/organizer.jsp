@@ -45,16 +45,13 @@
 		</div>
 		<div class="form-group">
 			<button type="button" id="buttonSearch" class="btn btn-info">
-				<span class="glyphicon glyphicon-search"></span> Search
+				<span class="glyphicon glyphicon-search"></span> Refresh
 			</button>
 			<button type="button" id="buttonInsert" class="btn btn-success">
 				<span class="glyphicon glyphicon-plus-sign"></span> Insert
 			</button>
 			<button type="button" id="buttonDelete" class="btn btn-warning">
 				<span class="glyphicon glyphicon-minus-sign"></span> Delete
-			</button>
-			<button type="button" id="buttonStupid" class="btn btn-warning" onclick="changeButtonText()">
-				<span class="glyphicon glyphicon-minus-sign"></span> Check
 			</button>
 		</div>
 		<div>
@@ -65,7 +62,8 @@
 						<th class="col-sm-1" data-field="tcheckDelete"></th>
 						<th class="col-sm-3" data-field="tname">Name</th>
 						<th class="col-sm-3" data-field="tmemo">Memo</th>
-						<th class="col-sm-2" data-field="tpriority">Priority</th>
+						<th class="col-sm-1" data-field="tpriority">Priority</th>
+						<th class="col-sm-1" data-field="deletion"></th>
 					</tr>
 				</thead>
 			</table>

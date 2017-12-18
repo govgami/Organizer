@@ -10,7 +10,8 @@ $(document).ready(function(){
 		"columnDefs": [
 			{"targets": [ 0 ],
 		     "visible": false,
-		     "searchable": false}
+		     "searchable": false,
+		     }
 		],
 		"ajax": {
 			"url": "/allUsagesModel",
@@ -23,12 +24,22 @@ $(document).ready(function(){
 						"<input type='checkbox' value='"+obj.issueID+"' id=''>",
 						obj.issueName,
 						obj.issueMemo,
-						obj.issuePriority
+						obj.issuePriority,
+						"<button class='btn-v-delete'  type='button'><span class='glyphicon glyphicon-minus-sign'>Delete</button>"
+						     
 					]).draw();
 				});
 			}
 		},
 	});
+
+
+    // Handle click on "Delete" button
+    $('#issueClient thead').on('click', '.btn-delete', function (e) {
+       var data = table.row( $(this).parents('tr') ).data();
+       var ided=$.map(data.issueID);
+       $(this).callAjax("removeModel/", ided);
+    } );
     
 	
 	$(window).on("load", empty());

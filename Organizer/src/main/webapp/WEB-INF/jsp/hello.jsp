@@ -28,7 +28,7 @@
 		<div class="container-fluid" id="topNavi">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">Welcome</a>
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-menu-left"></span></button>
 				
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
@@ -41,7 +41,7 @@
 		</div>
 	</nav>
 
-	<div class="container">
+	<div class="container" id="main-content">
 
 		<div class="starter-template">
 			<h1>Welcome</h1>

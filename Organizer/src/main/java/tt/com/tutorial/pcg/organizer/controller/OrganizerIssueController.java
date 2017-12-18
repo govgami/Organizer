@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,12 +126,25 @@ public class OrganizerIssueController {
 	@ExceptionHandler({ DataIntegrityViolationException.class })
 	@ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE/* , reason = "wrong value" */)
 	public HandlerResponse actOnException(DataIntegrityViolationException ve) {
-		return new HandlerResponse("violated", ve.getRootCause().getMessage());
+		return new HandlerResponse("violated integrity", ve.getRootCause().getMessage());
 	}
 
 	@ExceptionHandler({ HttpMessageNotReadableException.class })
 	@ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE/* , reason = "omitted compulsory row" */)
 	public HandlerResponse actOnException(HttpMessageNotReadableException ve) {
-		return new HandlerResponse("violated", ve.getRootCause().getMessage());
+		return new HandlerResponse("violated readability", ve.getRootCause().getMessage());
 	}
+
+	@ExceptionHandler({ NumberFormatException.class })
+	@ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE/* , reason = "omitted compulsory row" */)
+	public HandlerResponse actOnException(NumberFormatException ve) {
+		return new HandlerResponse("violated number format", ve.getMessage());
+	}
+
+	@ExceptionHandler({ ConstraintViolationException.class })
+	@ResponseStatus(value = HttpStatus.NOT_ACCEPTABLE/* , reason = "wrong value" */)
+	public HandlerResponse actOnException(ConstraintViolationException ve) {
+		return new HandlerResponse("violated constraint", ve.getMessage());
+	}
+
 }

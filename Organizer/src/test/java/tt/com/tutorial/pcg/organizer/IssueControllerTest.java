@@ -13,13 +13,13 @@ import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ControllerTest {
+public class IssueControllerTest {
 
 	@Autowired
 	OrganizerIssueController orgController;
 
 	@Test
-	public void shouldCreateSimpleObjectTest() {
+	public void shouldCreateIssueObjectTest() {
 		// given
 		OrganizerIssue issue = new OrganizerIssue("d1e", "pi", 2);
 
@@ -28,11 +28,11 @@ public class ControllerTest {
 		OrganizerIssue saved = orgController.create(issue);
 
 		// then
-		Assert.assertNotNull(/* dao.createOrganizerIssue(issue) */saved.getIssueID());
+		Assert.assertNotNull(saved.getIssueID());
 	}
 
 	@Test
-	public void shouldUpdateSimpleObjectTest() {
+	public void shouldUpdateIssueObjectTest() {
 		// given
 		OrganizerIssue issue = new OrganizerIssue("de2", "pi", 12);
 
@@ -46,7 +46,7 @@ public class ControllerTest {
 	}
 
 	@Test
-	public void shouldGetSimpleObjectTest() {
+	public void shouldGetIssueObjectTest() {
 		// given
 		OrganizerIssue issue = new OrganizerIssue("de3", "pi", 10);
 		issue = orgController.create(issue);
@@ -59,22 +59,20 @@ public class ControllerTest {
 	}
 
 	@Test
-	public void shouldRemoveSimpleObjectTest() {
+	public void shouldRemoveIssueObjectTest() {
 		// given
 		OrganizerIssue issue = new OrganizerIssue("de4", "pi", 10);
 		long id = orgController.create(issue).getIssueID();
 
 		// when
 		orgController.removeSingle(id);
-		// Long id = issue2.getIssueID();
-		// repo.delete(id);
 		OrganizerIssue issue2 = orgController.retrieveSingle(id);
 		// then
 		Assert.assertNull(issue2);
 	}
 
 	@Test(expected = DataIntegrityViolationException.class)
-	public void shouldThrowExceptionCauseNotExistingPriorityAtSimpleObjectTest() {
+	public void shouldThrowExceptionCauseNotExistingPriorityAtIssueObjectTest() {
 		// given
 		OrganizerIssue issue = new OrganizerIssue("de5", "pixe", null);
 
@@ -85,7 +83,7 @@ public class ControllerTest {
 	}
 
 	@Test(expected = DataIntegrityViolationException.class)
-	public void shouldThrowExceptionCauseNotExistingNameAtSimpleObjectTest() {
+	public void shouldThrowExceptionCauseNotExistingNameAtIssueObjectTest() {
 		// given
 		OrganizerIssue issue = new OrganizerIssue(null, "pixe", 2);
 
@@ -96,7 +94,7 @@ public class ControllerTest {
 	}
 
 	@Test(expected = DataIntegrityViolationException.class)
-	public void shouldThrowExceptionCauseNotExistingFieldsAtSimpleObjectTest() {
+	public void shouldThrowExceptionCauseNotExistingFieldsAtIssueObjectTest() {
 		// given
 		OrganizerIssue issue = new OrganizerIssue(null, "pixe", null);
 

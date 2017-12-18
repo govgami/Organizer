@@ -15,70 +15,63 @@ import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssueRepository;
 public class DatabaseSetupTest {
 
 	@Autowired
-	OrganizerIssueRepository repo;
-	// AnnotationConfigApplicationContext context =
-	// new AnnotationConfigApplicationContext(AppConfig.class);
+	OrganizerIssueRepository repository;
 
 	@Test
 	public void shouldWireManagerTest() {
-		// when
-		// = context.getBean(OrganizerIssueService.class);
 
 		// then
-		Assert.assertNotNull(repo);
+		Assert.assertNotNull(repository);
 	}
 
 	@Test
-	public void shouldCreateSimpleObjectTest() {
+	public void shouldCreateIssueObjectTest() {
 		// given
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 2);
 
 		// when
-		OrganizerIssue saved = repo.save(issue);
+		OrganizerIssue saved = repository.save(issue);
 
 		// then
-		Assert.assertNotNull(/* dao.createOrganizerIssue(issue) */saved.getIssueID());
+		Assert.assertNotNull(saved.getIssueID());
 	}
 
 	@Test
-	public void shouldUpdateSimpleObjectTest() {
+	public void shouldUpdateIssueObjectTest() {
 		// given
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 12);
 
 		// when
-		issue = repo.save(issue);
+		issue = repository.save(issue);
 		issue.setIssuePriority(14);
-		OrganizerIssue issue2 = repo.save(issue);
-		// resp = service.updateOrganizerIssue(issue);
+		OrganizerIssue issue2 = repository.save(issue);
 
 		// then
 		Assert.assertEquals(14, issue2.getIssuePriority().intValue());
 	}
 
 	@Test
-	public void shouldGetSimpleObjectTest() {
+	public void shouldGetIssueObjectTest() {
 		// given
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 10);
-		issue = repo.save(issue);
+		issue = repository.save(issue);
 
 		// when
-		OrganizerIssue issue2 = repo.findOne(issue.getIssueID());
+		OrganizerIssue issue2 = repository.findOne(issue.getIssueID());
 
 		// then
 		Assert.assertNotNull(issue2);
 	}
 
 	@Test
-	public void shouldRemoveSimpleObjectTest() {
+	public void shouldRemoveIssueObjectTest() {
 		// given
 		OrganizerIssue issue = new OrganizerIssue("de", "pi", 10);
-		long id = repo.save(issue).getIssueID();
+		long id = repository.save(issue).getIssueID();
 
 		// when
-		repo.delete(id);
-		// Long id = issue2.getIssueID();
-		// repo.delete(id);
-		OrganizerIssue issue2 = repo.findOne(id);
+		repository.delete(id);
+		OrganizerIssue issue2 = repository.findOne(id);
 		// then
 		Assert.assertNull(issue2);
 	}

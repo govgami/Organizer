@@ -77,8 +77,6 @@ public class OrganizerIssueController {
 
 	}
 
-	// @RequestPath
-
 	@Transactional
 	@GetMapping(value = PATH_RETRIEVE_ALL)
 	public List<OrganizerIssue> getAll() {
@@ -99,7 +97,6 @@ public class OrganizerIssueController {
 
 		OrganizerIssue oi = new OrganizerIssue(name, memo, priority);
 		organizerIssueService.createOrganizerIssue(oi);
-		// set to boolean validated by non-null
 		return oi != null;
 	}
 
@@ -117,8 +114,6 @@ public class OrganizerIssueController {
 		return new Integer(issues.size()) != null;
 
 	}
-
-	// @RequestPath
 
 	@Transactional
 	@PostMapping(value = PATH_RETRIEVE_ALL_M)

@@ -7,10 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 
-//@NamedQuery(name=OrganizerIssue.GET_BY_ID, query="select oi from OrganizerIssue where oi.issueId=?1")
+@NamedQueries({
+		@NamedQuery(name = OrganizerIssue.GET_BY_ID, query = "select oi from OrganizerIssue where oi.issueId=?1") })
 @Table(name = OrganizerIssue.TABLE_NAME)
 @Entity
 public class OrganizerIssue implements Serializable {
@@ -34,7 +37,7 @@ public class OrganizerIssue implements Serializable {
 	public static final String ISSUE_PRIORITY = "priority";
 	public static final String TABLE_NAME = "organizer_issues";
 
-	// public static final String GET_BY_ID="issue_by_id";
+	public static final String GET_BY_ID = "issue_by_id";
 
 	public OrganizerIssue() {
 	}

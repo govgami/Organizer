@@ -2,24 +2,25 @@
 
 :root{
 	--dark-blue:#0000ca;
-	--dark-red:#ca0000;
+	--shaded-red:#ca0000;
+	--dark-red:#b31c06;
 	--snow-grey:#fbfbfb;
 	--black-grey:#232323;
 	--black:#000;
 	--dark-violet:#9400d2;
+	--gold:#edd81b;
 }
 h1{
 	color: var(--dark-blue);
 }
 
 h2{
-	color:var(--dark-red);
+	color:var(--shaded-red);
 }
-text{
-	color:var(--snow-grey);
-}
+
 body {
 	background-color: var(--black);
+	color:var(--snow-grey);
 	}
 	
 	table.dataTable tr.odd {
@@ -33,17 +34,29 @@ body {
 	}
 	
 #topNavi #navbar a {
+	top: 51px;
+    width: 200px;
+	display:block;
+	padding: 10px 18px;
+	border-bottom:solid 1px #444;
+	
     background-color: var(--dark-violet);
-    text:var(--black);
+    color:var(--snow-grey);
     
     -webkit-transition: background-color 1000ms linear;
     -moz-transition: background-color 1000ms linear;
     -o-transition: background-color 1000ms linear;
     -ms-transition: background-color 1000ms linear;
     transition: background-color 1000ms linear;
+    
+    -webkit-transition: color 1000ms linear;
+    -moz-transition: color 1000ms linear;
+    -o-transition: color 1000ms linear;
+    -ms-transition: color 1000ms linear;
+    transition: color 1000ms linear;
 }
 
 #topNavi #navbar a:hover {
-    background-color: #b31c06;
-    text:var(--black);
+    background-color: var(--dark-red);
+    color:var(--gold);
 }

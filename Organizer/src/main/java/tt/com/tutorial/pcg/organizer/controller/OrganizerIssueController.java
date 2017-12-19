@@ -1,6 +1,5 @@
 package tt.com.tutorial.pcg.organizer.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -86,33 +86,54 @@ public class OrganizerIssueController {
 
 	// modelled
 
+	// @Transactional
+	// @PostMapping(value = PATH_ADD_M)
+	// public Boolean createModelled(HttpServletRequest req, HttpServletResponse
+	// resp) {
+	//
+	// System.out.println(req.getAttributeNames());
+	// String name = req.getParameter("issueName").equals("") ? null :
+	// req.getParameter("issueName");
+	// String memo = req.getParameter("issueMemo") == null ? "" :
+	// req.getParameter("issueMemo");
+	// Integer priority = req.getParameter("issuePriority").equals("") ? null
+	// : Integer.parseInt(req.getParameter("issuePriority"));
+	//
+	// OrganizerIssue oi = new OrganizerIssue(name, memo, priority);
+	// organizerIssueService.createOrganizerIssue(oi);
+	// return oi != null;
+	// }
+	// @Transactional
+	// @PostMapping(value = PATH_REMOVE_GROUP_M)
+	// public Boolean removeGroupModelled(HttpServletRequest req,
+	// HttpServletResponse resp) {
+	// String checked = req.getParameter("checked") == null ? "" :
+	// req.getParameter("checked");
+	//
+	// List<Long> issues = new ArrayList<Long>();
+	//
+	// for (String s : checked.split(",")) {
+	// issues.add(new Long(s));
+	// }
+	// organizerIssueService.deleteOrganizerIssues(issues);
+	// return new Integer(issues.size()) != null;
+	//
+	// }
+
 	@Transactional
 	@PostMapping(value = PATH_ADD_M)
-	public Boolean createModelled(HttpServletRequest req, HttpServletResponse resp) {
+	public @ResponseBody Boolean createModelled(@Valid @RequestBody OrganizerIssue oi) {
 
-		System.out.println(req.getAttributeNames());
-		String name = req.getParameter("issueName").equals("") ? null : req.getParameter("issueName");
-		String memo = req.getParameter("issueMemo") == null ? "" : req.getParameter("issueMemo");
-		Integer priority = req.getParameter("issuePriority").equals("") ? null
-				: Integer.parseInt(req.getParameter("issuePriority"));
-
-		OrganizerIssue oi = new OrganizerIssue(name, memo, priority);
 		organizerIssueService.createOrganizerIssue(oi);
 		return oi != null;
 	}
 
 	@Transactional
 	@PostMapping(value = PATH_REMOVE_GROUP_M)
-	public Boolean removeGroupModelled(HttpServletRequest req, HttpServletResponse resp) {
-		String checked = req.getParameter("checked") == null ? "" : req.getParameter("checked");
+	public @ResponseBody Boolean removeGroupModelled(@RequestBody List<Long> checked) {
 
-		List<Long> issues = new ArrayList<Long>();
-
-		for (String s : checked.split(",")) {
-			issues.add(new Long(s));
-		}
-		organizerIssueService.deleteOrganizerIssues(issues);
-		return new Integer(issues.size()) != null;
+		organizerIssueService.deleteOrganizerIssues(checked);
+		return new Integer(checked.size()) != null;
 
 	}
 

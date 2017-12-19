@@ -28,7 +28,7 @@
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="name">Name:</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control-valid" id="name" placeholder="Name">
+				<input type="text" class="form-control-valid" id="name" placeholder="Name" required>
 			</div>
 		</div>
 		<div class="form-group">
@@ -40,7 +40,7 @@
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="priority">Priority:</label>
 			<div class="col-sm-10">
-				<input type="number" class="form-control-valid" id="priority" placeholder="Priority">
+				<input type="number" class="form-control-valid" id="priority" placeholder="Priority" required>
 			</div>
 		</div>
 		<div class="form-group">
@@ -63,7 +63,7 @@
 						<th class="col-sm-3" data-field="tname">Name</th>
 						<th class="col-sm-3" data-field="tmemo">Memo</th>
 						<th class="col-sm-1" data-field="tpriority">Priority</th>
-						<th class="col-sm-1" data-field="deletion"></th>
+						<th class="col-sm-1" data-field="deletion">Action</th>
 					</tr>
 				</thead>
 			</table>

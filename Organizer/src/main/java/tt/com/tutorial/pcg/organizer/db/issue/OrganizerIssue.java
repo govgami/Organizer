@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Table(name = OrganizerIssue.TABLE_NAME)
@@ -22,11 +23,13 @@ public class OrganizerIssue implements Serializable {
 	protected Long issueID;
 	@Column(name = ISSUE_NAME, nullable = false)
 	@Size(min = 1)
+	@NotNull
 	protected String issueName;
 	@Column(name = ISSUE_MEMO)
 	protected String issueMemo;
 	@Column(name = ISSUE_PRIORITY, nullable = false)
 	@Digits(fraction = 0, integer = 10)
+	@NotNull
 	protected Integer issuePriority;
 
 	public static final String ISSUE_ID = "id";

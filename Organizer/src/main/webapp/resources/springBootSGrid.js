@@ -37,7 +37,7 @@ $(document).ready(function(){
 
 
     // Handle click on "Delete" button
-    $('#issueClient thead').on('click', '.btn-v-delete', function (e) {
+    $('#issueClient tbody').on('click', '.btn-v-delete', function (e) {
        var data = table.row( $(this).parents('tr') ).data();
        var ided=$.map(data.issueID);
        console.log("attempted removal "+ided.toString());
@@ -56,21 +56,19 @@ $(document).ready(function(){
 	$("#buttonInsert").click(function(){
 		
 		$(this).checkCompletedForm();
-		console.log("insert started "+validForm.toString());
-		if($(this).validForm){
-		$(this).callAjax("planModel/", "");
+
+		$(this).callAjaxCreationForm("planModel/", "");
 		
 		$(".form-control").val("");
-		}
 		
 	});
 	
 	$("#buttonDelete").click(function(){
 		
-		var valuesChecked = $("#issueClient input[type='checkbox']:checkbox:checked").map(
+		var valuesChecked = "["+$("#issueClient input[type='checkbox']:checkbox:checked").map(
 			     					function () {
 			     						return this.value;
-			     					}).get().join(",");
+			     					}).get().join(",")+"]";
 		
 		$(this).callAjax("removeModel/", valuesChecked);
 		
@@ -78,7 +76,9 @@ $(document).ready(function(){
 	
 	$.fn.checkCompletedForm = function(){
 		var nameValid = $("#name").val()!="";
+		console.log("nameValidity "+nameValid.toString());
 		var priorityValid = $("#priority").val()!="";
+		console.log("priorityValidity "+priorityValid.toString()+" v:"+$("#priority").val().toString());
 		
 		$(this).markFormField($("#name"), nameValid);
 		$(this).markFormField($("#priority"), priorityValid);
@@ -87,7 +87,7 @@ $(document).ready(function(){
 	}
 	
 	$.fn.markFormField=function(element, validity){
-		if(!validity){
+		if(validity==false){
 			$(element).className="form-control-wrong";
 		}
 		else{
@@ -99,16 +99,38 @@ $(document).ready(function(){
 		$.ajax({
 			type: "POST",
 			url: "/" + method,
+			contentType:"application/json; charset=utf-8",
 			dataType: "json",
 			timeout : 100000,
-			data: { issueName: $("#name").val(), issueMemo: $("#memo").val(), issuePriority: $("#priority").val(), checked: checkeds },
+			data: JSON.stringify(checkeds),
 			
 			success: function(data){
 				tableClient.clear().draw();
 				tableClient.ajax.reload();
 			},
 			error: function(e){
-				alert("ERROR: ", e);
+				alert("Not recognized gathering of checked items", e);
+			}
+		});
+	} 
+	
+	$.fn.callAjaxCreationForm = function( method){
+		$.ajax({
+			type: "POST",
+			url: "/" + method,
+			contentType:"application/json",
+			  dataType:"json",
+			timeout : 100000,
+			data: JSON.stringify( { issueName: $("#name").val(), issueMemo: $("#memo").val(), issuePriority: $("#priority").val()}),
+			
+			success: function(data){
+				tableClient.clear().draw();
+				tableClient.ajax.reload();
+			},
+			error: function(e){
+				if(!validForm){
+				alert("Incorrect issue parameters", e);
+				}
 			}
 		});
 	} 

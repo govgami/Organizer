@@ -28,19 +28,19 @@
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="name">Name:</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="name" placeholder="Name">
+				<input type="text" class="form-control-valid" id="name" placeholder="Name">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="memo">Memo:</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="memo" placeholder="Memo">
+				<input type="text" class="form-control-valid" id="memo" placeholder="Memo">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="priority">Priority:</label>
 			<div class="col-sm-10">
-				<input type="number" class="form-control" id="priority" placeholder="Priority">
+				<input type="number" class="form-control-valid" id="priority" placeholder="Priority">
 			</div>
 		</div>
 		<div class="form-group">

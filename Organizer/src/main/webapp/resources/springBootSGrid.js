@@ -2,6 +2,8 @@ function empty(){};
 function changeButtonText(){ document.title=(document.getElementById("buttonStupid").textContent);
 document.getElementById("buttonStupid").textContent="Stupid";};
 
+var validForm=false;
+
 $(document).ready(function(){
 	
 	// Activated the table
@@ -35,9 +37,10 @@ $(document).ready(function(){
 
 
     // Handle click on "Delete" button
-    $('#issueClient thead').on('click', '.btn-delete', function (e) {
+    $('#issueClient thead').on('click', '.btn-v-delete', function (e) {
        var data = table.row( $(this).parents('tr') ).data();
        var ided=$.map(data.issueID);
+       console.log("attempted removal "+ided.toString());
        $(this).callAjax("removeModel/", ided);
     } );
     
@@ -51,9 +54,14 @@ $(document).ready(function(){
 	});
 	
 	$("#buttonInsert").click(function(){
+		
+		$(this).checkCompletedForm();
+		console.log("insert started "+validForm.toString());
+		if($(this).validForm){
 		$(this).callAjax("planModel/", "");
 		
 		$(".form-control").val("");
+		}
 		
 	});
 	
@@ -67,6 +75,25 @@ $(document).ready(function(){
 		$(this).callAjax("removeModel/", valuesChecked);
 		
 	});
+	
+	$.fn.checkCompletedForm = function(){
+		var nameValid = $("#name").val()!="";
+		var priorityValid = $("#priority").val()!="";
+		
+		$(this).markFormField($("#name"), nameValid);
+		$(this).markFormField($("#priority"), priorityValid);
+		
+		validForm=nameValid&&priorityValid;
+	}
+	
+	$.fn.markFormField=function(element, validity){
+		if(!validity){
+			$(element).className="form-control-wrong";
+		}
+		else{
+			$(element).className="form-control-valid";
+		}
+	}
 	
 	$.fn.callAjax = function( method, checkeds ){
 		$.ajax({

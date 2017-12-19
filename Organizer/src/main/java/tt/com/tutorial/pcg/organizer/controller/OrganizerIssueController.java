@@ -91,9 +91,9 @@ public class OrganizerIssueController {
 	public Boolean createModelled(HttpServletRequest req, HttpServletResponse resp) {
 
 		System.out.println(req.getAttributeNames());
-		String name = req.getParameter("issueName") == null ? "" : req.getParameter("issueName");
+		String name = req.getParameter("issueName").equals("") ? null : req.getParameter("issueName");
 		String memo = req.getParameter("issueMemo") == null ? "" : req.getParameter("issueMemo");
-		Integer priority = req.getParameter("issuePriority") == null ? null
+		Integer priority = req.getParameter("issuePriority").equals("") ? null
 				: Integer.parseInt(req.getParameter("issuePriority"));
 
 		OrganizerIssue oi = new OrganizerIssue(name, memo, priority);

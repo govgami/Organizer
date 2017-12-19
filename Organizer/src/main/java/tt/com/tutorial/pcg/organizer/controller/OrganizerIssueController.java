@@ -2,8 +2,6 @@ package tt.com.tutorial.pcg.organizer.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -123,7 +120,7 @@ public class OrganizerIssueController {
 
 	@Transactional
 	@PostMapping(value = PATH_ADD_M)
-	public @ResponseBody Boolean createModelled(@Valid @RequestBody OrganizerIssue oi) {
+	public Boolean createModelled(@Valid @RequestBody OrganizerIssue oi) {
 
 		organizerIssueService.createOrganizerIssue(oi);
 		return oi != null;
@@ -133,6 +130,10 @@ public class OrganizerIssueController {
 	@PostMapping(value = PATH_REMOVE_GROUP_M)
 	public Boolean removeGroupModelled(@RequestBody IdVessel checked) {
 
+		List<Long> values = checked.getList();
+		if (values.isEmpty()) {
+
+		}
 		organizerIssueService.deleteOrganizerIssues(checked.getList());
 		return new Integer(checked.getList().size()) != null;
 
@@ -140,7 +141,7 @@ public class OrganizerIssueController {
 
 	@Transactional
 	@PostMapping(value = PATH_RETRIEVE_ALL_M)
-	public List<OrganizerIssue> allUsagesModel(HttpServletRequest req, HttpServletResponse resp) {
+	public List<OrganizerIssue> allUsagesModel() {
 		System.out.println("called: " + PATH_RETRIEVE_ALL_M);
 		return organizerIssueService.getOrganizerIssue();
 	}

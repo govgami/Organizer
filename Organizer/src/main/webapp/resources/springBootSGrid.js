@@ -37,8 +37,9 @@ $(document).ready(function(){
 
 
     // Handle click on "Delete" button
-    $('#issueClient tbody').on('click', '.btn-v-delete', function (e) {
-       var data = table.row( $(this).parents('tr') ).data();
+    $('.btn-v-delete').on('click', function (e) {
+       var data = $(this).closest("tr");//.parents('tr').text();
+       console.log(data);
        var ided=$.map(data.issueID);
        console.log("attempted removal "+ided.toString());
        $(this).callAjax("removeModel/", ided);

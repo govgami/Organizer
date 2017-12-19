@@ -63,8 +63,8 @@ body {
 	
 #topNavi #navbar a {
 	
-	top: 51px;
-    width: 200px;
+	top: 301px;
+    width: 180px;
 	border-bottom:solid 1px #444;
 	
     background-color: var(--dark-violet);

@@ -65,11 +65,11 @@ $(document).ready(function(){
 	
 	$("#buttonDelete").click(function(){
 		
-		var valuesChecked = "["+$("#issueClient input[type='checkbox']:checkbox:checked").map(
+		var valuesChecked = $("#issueClient input[type='checkbox']:checkbox:checked").map(
 			     					function () {
 			     						return this.value;
-			     					}).get().join(",")+"]";
-		
+			     					}).get().join(",");
+		console.log("attempted removal "+valuesChecked);
 		$(this).callAjax("removeModel/", valuesChecked);
 		
 	});
@@ -102,7 +102,7 @@ $(document).ready(function(){
 			contentType:"application/json; charset=utf-8",
 			dataType: "json",
 			timeout : 100000,
-			data: JSON.stringify(checkeds),
+			data: JSON.stringify({checkeds}),
 			
 			success: function(data){
 				tableClient.clear().draw();

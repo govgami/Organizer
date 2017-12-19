@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import tt.com.tutorial.pcg.organizer.db.issue.IdVessel;
 import tt.com.tutorial.pcg.organizer.db.issue.OrganizerIssue;
 import tt.com.tutorial.pcg.organizer.exceptionhandler.HandlerResponse;
 import tt.com.tutorial.pcg.organizer.service.OrganizerIssueService;
@@ -130,10 +131,10 @@ public class OrganizerIssueController {
 
 	@Transactional
 	@PostMapping(value = PATH_REMOVE_GROUP_M)
-	public @ResponseBody Boolean removeGroupModelled(@RequestBody List<Long> checked) {
+	public Boolean removeGroupModelled(@RequestBody IdVessel checked) {
 
-		organizerIssueService.deleteOrganizerIssues(checked);
-		return new Integer(checked.size()) != null;
+		organizerIssueService.deleteOrganizerIssues(checked.getList());
+		return new Integer(checked.getList().size()) != null;
 
 	}
 

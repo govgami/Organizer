@@ -27,8 +27,8 @@ $(document).ready(function(){
 						obj.issueName,
 						obj.issueMemo,
 						obj.issuePriority,
-						"<button class='btn-v-delete'  type='button'><span class='glyphicon glyphicon-minus-sign'>Delete</button>"
-						     
+						"<button class='btn-v-update'  type='button'><span class='glyphicon glyphicon-search'>Update</button>",
+						"<button class='btn-v-delete'  type='button'><span class='glyphicon glyphicon-minus-sign' onclick='clickDelete()'>Delete</button>"
 					]).draw();
 				});
 			}
@@ -37,7 +37,7 @@ $(document).ready(function(){
 
 
     // Handle click on "Delete" button
-    $('.btn-v-delete').on('click', function (e) {
+    $('#issueClient btn-v-delete').click(function (e) {
        var data = $(this).closest("tr");//.parents('tr').text();
        console.log(data);
        var ided=$.map(data.issueID);
@@ -45,6 +45,14 @@ $(document).ready(function(){
        $(this).callAjax("removeModel/", ided);
     } );
     
+    // Handle click on "Delete" button
+    function clickDelete() {
+       var data = $(this).closest("tr");//.parents('tr').text();
+       console.log(data);
+       var ided=$.map(data.issueID);
+       console.log("attempted removal "+ided.toString());
+       $(this).callAjax("removeModel/", ided);
+    };
 	
 	$(window).on("load", empty());
 	

@@ -21,10 +21,18 @@
 <body>
  
  
-<div class="container">
-	<h2>Considered issues</h2>
- 
-	<form class="form-horizontal" role="form">
+  <nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Spring Boot</a>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-menu-left"></span></button>
+				
+			</div>
+			
+			<div id="navbar" class="collapse navbar-collapse">
+			
+			
+		<form class="form-horizontal">	
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="name">Name:</label>
 			<div class="col-sm-10">
@@ -43,12 +51,19 @@
 				<input type="number" class="form-control-valid" id="priority" placeholder="Priority" required>
 			</div>
 		</div>
+			<button type="button" id="buttonInsert" class="btn btn-success">
+				<span class="glyphicon glyphicon-plus-sign"></span> Insert
+			</button>
+		</form>
+			</div>
+		</div>
+	</nav>
+<div class="container">
+		<h2>Considered issues</h2>
+	<form class="form-horizontal" role="form">
 		<div class="form-group">
 			<button type="button" id="buttonSearch" class="btn btn-info">
 				<span class="glyphicon glyphicon-search"></span> Refresh
-			</button>
-			<button type="button" id="buttonInsert" class="btn btn-success">
-				<span class="glyphicon glyphicon-plus-sign"></span> Insert
 			</button>
 			<button type="button" id="buttonDelete" class="btn btn-warning">
 				<span class="glyphicon glyphicon-minus-sign"></span> Delete
@@ -63,7 +78,8 @@
 						<th class="col-sm-3" data-field="tname">Name</th>
 						<th class="col-sm-3" data-field="tmemo">Memo</th>
 						<th class="col-sm-1" data-field="tpriority">Priority</th>
-						<th class="col-sm-1" data-field="deletion">Action</th>
+						<th class="col-sm-1" data-field="edition"></th>
+						<th class="col-sm-1" data-field="deletion"></th>
 					</tr>
 				</thead>
 			</table>

@@ -29,7 +29,7 @@
 				
 			</div>
 			
-			<div id="navbar" class="collapse navbar-collapse">
+			<div id="navbar" class="collapse">
 			
 		<form class="form-horizontal">	
 		<div class="form-group collapse">

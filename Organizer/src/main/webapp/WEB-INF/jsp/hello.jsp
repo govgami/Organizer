@@ -30,16 +30,16 @@
 				<a class="navbar-brand" href="#">Welcome</a>
 				<button type="button" class="navbar-toggle btn collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-menu-left"></span></button>
 				<ul class="nav navbar-nav navbar-center lined">
-					<li class="nav-item lined"><a class="nav-link" href="#">Item 1</a></li>
-					<li class="nav-item lined"><a class="nav-link" href="#">Item 2</a></li>
-					<li class="nav-item lined"><a class="nav-link" href="#">Item 3</a></li>
+					<li class="nav-item lined"><a class="nav-link lined" href="#">Item 1</a></li>
+					<li class="nav-item lined"><a class="nav-link lined" href="#">Item 2</a></li>
+					<li class="nav-item lined"><a class="nav-link lined" href="#">Item 3</a></li>
 				</ul>
 			</div>
-			<div id="navbar" class="collapse navbar-collapse">
+			<div id="navbar" class="collapse">
 				<ul class="nav navbar-nav navbar-left">
-					<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
-					<li class="nav-item"><a href="/organizer">Issues</a></li>
-					<li class="nav-item"><a href="#about">About</a></li>
+					<li class="nav-item nav-line active"><a class="nav-line" href="#">Home</a></li>
+					<li class="nav-item nav-line"><a class="nav-line" href="/organizer">Issues</a></li>
+					<li class="nav-item nav-line"><a class="nav-line" href="#about">About</a></li>
 				</ul>
 			</div>
 		</div>

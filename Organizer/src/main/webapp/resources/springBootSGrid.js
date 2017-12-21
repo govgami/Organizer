@@ -44,8 +44,8 @@ $(document).ready(function(){
 						obj.issueName,
 						obj.issueMemo,
 						obj.issuePriority,
-						"<button class='btn-v-update btn btn-info'  type='button' onclick='$(this).clickUpdate($(this));' value='"+obj.issueID+"'><span class='glyphicon glyphicon-search'></span>Update</button>",
-						"<button class='btn-v-delete btn btn-warning'  type='button' onclick='$(this).clickDelete($(this));'><span class='glyphicon glyphicon-minus-sign'></span>Delete</button>"
+						"<button class='btn-v-update btn btn-mini btn-info'  type='button' onclick='$(this).clickUpdate($(this));' value='"+obj.issueID+"'><span class='glyphicon glyphicon-search'></span>Update</button>",
+						"<button class='btn-v-delete btn btn-mini btn-warning'  type='button' onclick='$(this).clickDelete($(this));'><span class='glyphicon glyphicon-minus-sign'></span>Delete</button>"
 					]).draw();
 				});
 			}

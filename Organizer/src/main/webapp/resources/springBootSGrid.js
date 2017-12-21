@@ -4,14 +4,24 @@ document.getElementById("buttonStupid").textContent="Stupid";};
 
 var validForm=false;
 
-// Handle click on "Delete" button
-function clickDelete(caller) {
-	console.log(caller);//-->>finally catched right object!
-   var ided=$.map(caller.value);
-   console.log(caller.value);
-   console.log("attempted removal "+ided.toString());
-   $(this).callAjax("removeModel/", ided);
-};
+//// Handle click on "Delete" button
+//function clickDelete(caller) {
+//	console.log(caller);//-->>finally catched right object!
+//	
+//	console.log(caller.value);
+//	var row = $(this).closest("tr");
+//	var tds = row.find("input:checkbox");//("td:nth-child(2)");
+//	//console.table([$("#issueClient").row(this).data()], ["Id"]);
+//	//var data = $("#issueClient").row(this).data().Id;
+//	//var data = caller.value;
+//	console.log(tds.value);
+////	$.each($tds, function() {                // Visits every single <td> element
+////	    console.log($(this).text());
+////   var ided=$.map(caller.value);
+////   console.log(caller.data.value);
+////   console.log("attempted innate table row removal "+ided.toString());
+////   $(this).callAjax("removeModel/", ided);
+//};
 
 $(document).ready(function(){
 	
@@ -37,31 +47,12 @@ $(document).ready(function(){
 						obj.issueMemo,
 						obj.issuePriority,
 						"<button class='btn-v-update'  type='button'><span class='glyphicon glyphicon-search'></span>Update</button>",
-						"<button class='btn-v-delete'  type='button' value='"+obj.issueID+"' onclick='clickDelete($(this));'><span class='glyphicon glyphicon-minus-sign'></span>Delete</button>"
+						"<button class='btn-v-delete'  type='button' onclick='$(this).clickDelete($(this));'><span class='glyphicon glyphicon-minus-sign'></span>Delete</button>"
 					]).draw();
 				});
 			}
 		},
 	});
-
-
-    // Handle click on "Delete" button
-    $('.btn-v-delete').click(function (e) {
-       var data = $(this).closest("tr");//.parents('tr').text();
-       console.log(data);
-       var ided=$.map(data.issueID);
-       console.log("attempted searched removal "+ided.toString());
-       $(this).callAjax("removeModel/", ided);
-    } );
-    
-    // Handle click on "Delete" button
-    $('.btn-v-update').click(function (e) {
-       var data = $(this).closest("tr");//.parents('tr').text();
-       console.log(data);
-       var ided=$.map(data.issueID);
-       console.log("attempted removal "+ided.toString());
-       $(this).callAjax("removeModel/", ided);
-    } );
     
 
 	
@@ -93,6 +84,27 @@ $(document).ready(function(){
 		$(this).callAjax("removeModel/", valuesChecked);
 		
 	});
+	
+	$.fn.clickDelete=function(caller) {
+		console.log(caller);//-->>finally catched right object!
+		
+		var row = $(this).closest("tr");
+		var tds = row.find("input[type='checkbox']:checkbox");//("input:checkbox");//("td:nth-child(2)");
+
+		console.log(tds.val());
+		console.log("attempted removal "+tds.val());
+		$(this).callAjaxCreationForm("removeModel/");
+	};
+	$.fn.clickUpdate=function(caller) {
+		console.log(caller);//-->>finally catched right object!
+		
+		var row = $(this).closest("tr");
+		var tds = row.find("input[type='checkbox']:checkbox");//("input:checkbox");//("td:nth-child(2)");
+
+		console.log(tds.val());
+		console.log("attempted removal "+tds.val());
+		$(this).callAjax("removeModel/", tds.val());
+	};
 	
 	$.fn.checkCompletedForm = function(){
 		var nameValid = $("#name").val()!="";
@@ -141,7 +153,7 @@ $(document).ready(function(){
 			contentType:"application/json",
 			  dataType:"json",
 			timeout : 100000,
-			data: JSON.stringify( { issueName: $("#name").val(), issueMemo: $("#memo").val(), issuePriority: $("#priority").val()}),
+			data: JSON.stringify( { issueId:"", issueName: $("#name").val(), issueMemo: $("#memo").val(), issuePriority: $("#priority").val()}),
 			
 			success: function(data){
 				tableClient.clear().draw();

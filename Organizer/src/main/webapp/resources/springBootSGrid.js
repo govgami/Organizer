@@ -37,7 +37,7 @@ $(document).ready(function(){
 			"type": "POST",
 			"success" :  function(data){
 				$.each(data, function(ind, obj){
-					
+					//!!!! --- script uses direct addressing so alterations to table column require corrections in the script!!
 					tableClient.row.add([
 						obj.issueID,
 						"<input type='checkbox' value='"+obj.issueID+"' id=''>",
@@ -94,23 +94,22 @@ console.log("Called edit: "+$("#id").text());
 	});
 	
 	$.fn.clickDelete=function(caller) {
-		console.log(caller);
 		
 		var row = $(this).closest("tr");
 		var tds = row.find("input[type='checkbox']:checkbox");//("input:checkbox");//("td:nth-child(2)");
-		console.log(tds.text());
+
 		console.log("attempted removal "+tds.val());
 		$(this).callAjax("removeModel/", tds.val());
 	};
 	$.fn.clickUpdate=function(caller) {
-		console.log(caller);
 
 		var row = $(this).closest("tr");
 		var tds = row.find("input[type='checkbox']:checkbox");
 		console.log("attempted access "+tds.val());
 		
 		$("#id").text(tds.val());
-		console.log($("#id").text());
+
+		$("#nav_collapse").click();
 		
 		tableClient.row(this).data();
 		$("#name").val(row.find("td:nth-child(2)").text());//get wanted cell?
@@ -135,10 +134,10 @@ console.log("Called edit: "+$("#id").text());
 	
 	$.fn.markFormField=function(element, validity){
 		if(validity==false){
-			$(element).className="form-control-wrong";
+			$(element).addClass("wrong");
 		}
 		else{
-			$(element).className="form-control-valid";
+			$(element).removeClass("wrong");
 		}
 	}
 	

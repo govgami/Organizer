@@ -29,7 +29,11 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">Welcome</a>
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-menu-left"></span></button>
-				
+				<ul class="nav navbar-nav navbar-center">
+					<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+					<li class="nav-item"><a href="/organizer">Issues</a></li>
+					<li class="nav-item"><a href="#about">About</a></li>
+				</ul>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-left">

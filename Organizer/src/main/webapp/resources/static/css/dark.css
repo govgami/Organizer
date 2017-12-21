@@ -34,7 +34,7 @@ body {
 	background-color: var(--black);
 	color:var(--snow-grey);
 	}
-		.form-control-wrong{
+		.wrong{
 	background-color: var(--dark-red);
 	color:var(--black-grey);
 	}

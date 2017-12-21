@@ -77,7 +77,7 @@ $(document).ready(function(){
 		$(this).checkCompletedForm();
 console.log("Called edit: "+$("#id").text());
 		$(this).callAjaxCreationForm("edit/", $("#id").text());
-		
+		$("#nav_collapse").click();
 		$(".form-control").val("");
 		
 	});
@@ -113,8 +113,13 @@ console.log("Called edit: "+$("#id").text());
 		console.log($("#id").text());
 		
 		tableClient.row(this).data();
-		var ttds=row.find("td:nth-child()");//get wanted cell?
+		$("#name").val(row.find("td:nth-child(2)").text());//get wanted cell?
+		$("#memo").val(row.find("td:nth-child(3)").text());
+		$("#priority").val(row.find("td:nth-child(4)").text());
+		var ttds=row.find("td:nth-child(0)");
 		console.log(ttds);
+		console.log(ttds.text());
+		console.log(ttds.val());
 
 	};
 	

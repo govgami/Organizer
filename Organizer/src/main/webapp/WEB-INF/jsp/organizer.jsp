@@ -25,12 +25,11 @@
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">Organizer</a>
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-menu-left"></span></button>
+				<button type="button" class="navbar-toggle collapsed" id="nav_collapse" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-menu-left"></span></button>
 				
 			</div>
 			
 			<div id="navbar" class="collapse navbar-collapse">
-			
 			
 		<form class="form-horizontal">	
 		<div class="form-group collapse">

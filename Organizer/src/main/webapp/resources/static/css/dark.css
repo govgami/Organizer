@@ -39,30 +39,36 @@ body {
 	color:var(--black-grey);
 	}
 	
-		form-control-valid{
-	background-color: var(--black);
-	color:var(--snow-grey);
-	}
-			form-control-wrong{
-	background-color: var(--dark-red);
-	color:var(--black-grey);
-	}
 	
 	.nav.navbar-nav.navbar-left li a {
 	display: block;
   	padding: 8px 14px;
   	border-bottom:solid 1px #444;
+  	width: 200px;
   	
 	text-align: left;
 	color: var(--black);
+	z-index:0;
 	}
+	
+	.lined{
+	display: inline-block;
+	text-align: center;
+	padding: 8px 14px;
+	z-index:1;
+	}
+	
 .navbar-brand{
 	background-color: var(--black);
 	color:var(--gold);
 }
 	#fixedTop{
 	position: fixed;
+	width: 400px;
+	background-color: var(--black);
+	z-index:1;
 	}
+	
 #topNavi #navbar a {
 	
 	top: 301px;
@@ -90,10 +96,10 @@ body {
     color:var(--gold);
 }
 
-#main-content {
+.main-content {
 
   position: absolute;
-  margin-top: 60px;
+  margin-top: 120px;
   margin-left: 200px;
   padding: 20px;
 }

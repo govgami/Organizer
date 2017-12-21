@@ -28,11 +28,11 @@
 		<div class="container-fluid" id="topNavi">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">Welcome</a>
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-menu-left"></span></button>
-				<ul class="nav navbar-nav navbar-center">
-					<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-					<li class="nav-item"><a href="/organizer">Issues</a></li>
-					<li class="nav-item"><a href="#about">About</a></li>
+				<button type="button" class="navbar-toggle btn collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-menu-left"></span></button>
+				<ul class="nav navbar-nav navbar-center lined">
+					<li class="nav-item lined"><a class="nav-link" href="#">Item 1</a></li>
+					<li class="nav-item lined"><a class="nav-link" href="#">Item 2</a></li>
+					<li class="nav-item lined"><a class="nav-link" href="#">Item 3</a></li>
 				</ul>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
@@ -45,7 +45,7 @@
 		</div>
 	</nav>
 
-	<div class="container" id="main-content">
+	<div class="container main-content">
 
 		<div class="starter-template">
 			<h1>Welcome</h1>

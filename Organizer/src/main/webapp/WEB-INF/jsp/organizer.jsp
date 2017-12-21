@@ -25,7 +25,7 @@
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">Organizer</a>
-				<button type="button" class="navbar-toggle collapsed" id="nav_collapse" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-menu-left"></span></button>
+				<button type="button" class="navbar-toggle btn collapsed" id="nav_collapse" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-menu-left"></span></button>
 				
 			</div>
 			
@@ -59,14 +59,14 @@
 			<button type="button" id="buttonInsert" class="btn btn-success">
 				<span class="glyphicon glyphicon-plus-sign"></span> New
 			</button>
-			<button type="button" id="buttonUpdate" class="btn btn-success">
+			<button type="button" id="buttonUpdate" class="btn btn-primary">
 				<span class="glyphicon glyphicon-plus-sign"></span> Update
 			</button>
 		</form>
 			</div>
 		</div>
 	</nav>
-<div class="container">
+<div class="container main-content">
 		<h2>Considered issues</h2>
 	<form class="form-horizontal" role="form">
 		<div class="form-group">

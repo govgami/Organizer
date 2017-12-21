@@ -47,6 +47,14 @@ public class OrganizerIssue implements Serializable {
 		this.issuePriority = issuePriority;
 	}
 
+	// public OrganizerIssue(Long issueID, String issueName, String issueMemo,
+	// Integer issuePriority) {
+	// this.issueID = issueID;
+	// this.issueName = issueName;
+	// this.issueMemo = issueMemo;
+	// this.issuePriority = issuePriority;
+	// }
+
 	public Long getIssueID() {
 		return issueID;
 	}

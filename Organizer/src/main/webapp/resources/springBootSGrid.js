@@ -1,6 +1,4 @@
 function empty(){};
-function changeButtonText(){ document.title=(document.getElementById("buttonStupid").textContent);
-document.getElementById("buttonStupid").textContent="Stupid";};
 
 var validForm=false;
 
@@ -46,7 +44,7 @@ $(document).ready(function(){
 						obj.issueName,
 						obj.issueMemo,
 						obj.issuePriority,
-						"<button class='btn-v-update'  type='button'><span class='glyphicon glyphicon-search'></span>Update</button>",
+						"<button class='btn-v-update'  type='button' onclick='$(this).clickUpdate($(this));' value='"+obj.issueID+"'><span class='glyphicon glyphicon-search'></span>Update</button>",
 						"<button class='btn-v-delete'  type='button' onclick='$(this).clickDelete($(this));'><span class='glyphicon glyphicon-minus-sign'></span>Delete</button>"
 					]).draw();
 				});
@@ -68,7 +66,17 @@ $(document).ready(function(){
 		
 		$(this).checkCompletedForm();
 
-		$(this).callAjaxCreationForm("planModel/", "");
+		$(this).callAjaxCreationForm("plan/", "");
+		
+		$(".form-control").val("");
+		
+	});
+	
+	$("#buttonUpdate").click(function(){
+		
+		$(this).checkCompletedForm();
+console.log("Called edit: "+$("#id").text());
+		$(this).callAjaxCreationForm("edit/", $("#id").text());
 		
 		$(".form-control").val("");
 		
@@ -86,31 +94,33 @@ $(document).ready(function(){
 	});
 	
 	$.fn.clickDelete=function(caller) {
-		console.log(caller);//-->>finally catched right object!
+		console.log(caller);
 		
 		var row = $(this).closest("tr");
 		var tds = row.find("input[type='checkbox']:checkbox");//("input:checkbox");//("td:nth-child(2)");
-
-		console.log(tds.val());
-		console.log("attempted removal "+tds.val());
-		$(this).callAjaxCreationForm("removeModel/");
-	};
-	$.fn.clickUpdate=function(caller) {
-		console.log(caller);//-->>finally catched right object!
-		
-		var row = $(this).closest("tr");
-		var tds = row.find("input[type='checkbox']:checkbox");//("input:checkbox");//("td:nth-child(2)");
-
-		console.log(tds.val());
+		console.log(tds.text());
 		console.log("attempted removal "+tds.val());
 		$(this).callAjax("removeModel/", tds.val());
+	};
+	$.fn.clickUpdate=function(caller) {
+		console.log(caller);
+
+		var row = $(this).closest("tr");
+		var tds = row.find("input[type='checkbox']:checkbox");
+		console.log("attempted access "+tds.val());
+		
+		$("#id").text(tds.val());
+		console.log($("#id").text());
+		
+		tableClient.row(this).data();
+		var ttds=row.find("td:nth-child()");//get wanted cell?
+		console.log(ttds);
+
 	};
 	
 	$.fn.checkCompletedForm = function(){
 		var nameValid = $("#name").val()!="";
-		console.log("nameValidity "+nameValid.toString());
 		var priorityValid = $("#priority").val()!="";
-		console.log("priorityValidity "+priorityValid.toString()+" v:"+$("#priority").val().toString());
 		
 		$(this).markFormField($("#name"), nameValid);
 		$(this).markFormField($("#priority"), priorityValid);
@@ -146,14 +156,15 @@ $(document).ready(function(){
 		});
 	} 
 	
-	$.fn.callAjaxCreationForm = function( method){
+	$.fn.callAjaxCreationForm = function( method, id){
+		console.log("used id: "+id);
 		$.ajax({
 			type: "POST",
 			url: "/" + method,
 			contentType:"application/json",
 			  dataType:"json",
 			timeout : 100000,
-			data: JSON.stringify( { issueId:"", issueName: $("#name").val(), issueMemo: $("#memo").val(), issuePriority: $("#priority").val()}),
+			data: JSON.stringify( { issueID: id, issueName: $("#name").val(), issueMemo: $("#memo").val(), issuePriority: $("#priority").val()}),
 			
 			success: function(data){
 				tableClient.clear().draw();

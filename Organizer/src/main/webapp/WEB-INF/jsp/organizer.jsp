@@ -24,7 +24,7 @@
   <nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Spring Boot</a>
+				<a class="navbar-brand" href="#">Organizer</a>
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-menu-left"></span></button>
 				
 			</div>
@@ -33,6 +33,12 @@
 			
 			
 		<form class="form-horizontal">	
+		<div class="form-group collapse">
+			<label class="control-label col-sm-1" for="id">Id:</label>
+			<div class="col-sm-10">
+				<input type="number" class="form-control-valid" id="id" placeholder="Id" required>
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="name">Name:</label>
 			<div class="col-sm-10">
@@ -52,7 +58,10 @@
 			</div>
 		</div>
 			<button type="button" id="buttonInsert" class="btn btn-success">
-				<span class="glyphicon glyphicon-plus-sign"></span> Insert
+				<span class="glyphicon glyphicon-plus-sign"></span> New
+			</button>
+			<button type="button" id="buttonUpdate" class="btn btn-success">
+				<span class="glyphicon glyphicon-plus-sign"></span> Update
 			</button>
 		</form>
 			</div>

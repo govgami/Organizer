@@ -85,14 +85,6 @@ public class OrganizerIssueController {
 	//
 
 	@Transactional
-	@PostMapping(value = PATH_ADD_M)
-	public Boolean createModelled(@Valid @RequestBody OrganizerIssue oi) {
-
-		organizerIssueService.createOrganizerIssue(oi);
-		return oi != null;
-	}
-
-	@Transactional
 	@PostMapping(value = PATH_REMOVE_GROUP_M)
 	public Boolean removeGroupModelled(@RequestBody IdVessel checked) {
 

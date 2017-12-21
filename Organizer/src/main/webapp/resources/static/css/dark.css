@@ -60,7 +60,9 @@ body {
 	background-color: var(--black);
 	color:var(--gold);
 }
-	
+	#fixedTop{
+	position: fixed;
+	}
 #topNavi #navbar a {
 	
 	top: 301px;

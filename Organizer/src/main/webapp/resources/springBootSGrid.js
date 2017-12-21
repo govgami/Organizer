@@ -5,8 +5,10 @@ document.getElementById("buttonStupid").textContent="Stupid";};
 var validForm=false;
 
 // Handle click on "Delete" button
-function clickDelete(id) {
-   var ided=$.map(data.issueID);
+function clickDelete(caller) {
+	console.log(caller);//-->>finally catched right object!
+   var ided=$.map(caller.value);
+   console.log(caller.value);
    console.log("attempted removal "+ided.toString());
    $(this).callAjax("removeModel/", ided);
 };
@@ -35,7 +37,7 @@ $(document).ready(function(){
 						obj.issueMemo,
 						obj.issuePriority,
 						"<button class='btn-v-update'  type='button'><span class='glyphicon glyphicon-search'></span>Update</button>",
-						"<button class='btn-v-delete'  type='button' onclick='clickDelete()'><span class='glyphicon glyphicon-minus-sign'></span>Delete</button>"
+						"<button class='btn-v-delete'  type='button' value='"+obj.issueID+"' onclick='clickDelete($(this));'><span class='glyphicon glyphicon-minus-sign'></span>Delete</button>"
 					]).draw();
 				});
 			}
@@ -44,11 +46,11 @@ $(document).ready(function(){
 
 
     // Handle click on "Delete" button
-    $('#issueClient .btn-v-delete').click(function (e) {
+    $('.btn-v-delete').click(function (e) {
        var data = $(this).closest("tr");//.parents('tr').text();
        console.log(data);
        var ided=$.map(data.issueID);
-       console.log("attempted removal "+ided.toString());
+       console.log("attempted searched removal "+ided.toString());
        $(this).callAjax("removeModel/", ided);
     } );
     

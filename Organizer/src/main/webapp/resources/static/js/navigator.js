@@ -2,9 +2,9 @@
  * 
  */
 
-$.get("navigator.jsp", function(data){
-    $("#navigator").replaceWith(data);
-});
+//$.get("navigator.jsp", function(data){
+//    $("#navigator").replaceWith(data);
+//});
 //$(function(){
 //  $("#navigator").load("/navigator.jsp");
 //});

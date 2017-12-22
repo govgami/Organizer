@@ -25,13 +25,9 @@
 
 </head>
 <body>
-<div id="navigator"></div>
 
-<script>
-$.get("navigator", function(data){
-    $("#navigator").replaceWith(data);
-});
-</script>
+<jsp:include page="navigator.jsp" />
+
 	<div class="container main-content">
 
 		<div class="starter-template">

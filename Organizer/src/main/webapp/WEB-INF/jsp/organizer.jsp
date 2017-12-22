@@ -21,7 +21,7 @@
 <body>
  
  
-  <nav class="navbar navbar-default navbar-fixed-top" id="fixedTop">
+  <nav class="navbar navbar-default" id="fixedTop">
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">Organizer</a>

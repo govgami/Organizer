@@ -53,4 +53,10 @@ public class NavigatorController {
 		model.addAttribute("name", name);
 		return "next";
 	}
+
+	@GetMapping(value = "/navigator", produces = MediaType.TEXT_HTML_VALUE)
+	public ModelAndView navigation() {
+
+		return new ModelAndView("navigator");
+	}
 }

@@ -34,31 +34,40 @@ body {
 	background-color: var(--black);
 	color:var(--snow-grey);
 	}
-		.wrong{
+	.wrong{
 	background-color: var(--dark-red);
 	color:var(--black-grey);
 	}
+	.lined, .inlined{
+	display:inline-block;
+	}
 	
-	.lined{
-	display: inline-block;
+	
+	.inlined{
+		min-height: 20px;
+    	min-width: 50px;
 	text-align: left;
-	padding: 8px 14px;
+	padding: 10px 14px;
+	border: solid 1px var(--black-grey);
+	border-radius: 8px;
 	}
 	
 .navbar-brand{
 	background-color: var(--black);
 	color:var(--gold);
 }
-	#fixedTop{
+	.navbar{
 	position: fixed;
-	width: 400px;
+	width: 100%;
 	background-color: var(--black);
+	border-bottom:solid 1px #444;
+	border-radius: 5px;
 	}
 	
 
 .nav-line {
-	min-height: 40px;
-    min-width: 180px;
+	min-height: 30px;
+    width: 180px;
 	border-bottom:solid 1px #444;
 	border-radius: 5px;
 	
@@ -80,6 +89,19 @@ body {
 
 .nav-line:hover {
     background-color: var(--dark-red);
+    color:var(--gold);
+}
+.nav-link{
+	display:inline-block;
+	  	padding: 10px 14px;
+	    color:var(--snow-grey);
+	-webkit-transition: color 1000ms linear;
+    -moz-transition: color 1000ms linear;
+    -o-transition: color 1000ms linear;
+    -ms-transition: color 1000ms linear;
+    transition: color 1000ms linear;
+}
+.nav-link:hover {
     color:var(--gold);
 }
 
